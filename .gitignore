@@ -1,0 +1,10 @@
+*.bbl
+*.fls
+*.bib
+*.gz
+*.log
+*.fdb_latexmk
+*.aux
+*.blg
+mainNotes.bib
+main.synctex.gz
