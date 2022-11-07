@@ -1,4 +1,3 @@
-
 \documentclass{lxaiproposal}
   
   
@@ -31,6 +30,7 @@
 
 \usepackage{booktabs}
 \usepackage{setspace}
+\usepackage{wrapfig}
 
 \setstretch{1.4}
 %% --------------------------------------------------------------
@@ -43,13 +43,13 @@
 
 \author{\coord{Donghun Jung, }{2020312141}{1} \\
         \coord{Jinhwa Hong, }{2017310820}{2} \\
-        \coord{hyeonjeong Ko}{2020315791}{3} \\
+        \coord{hyeonjeong Ko, }{2020315791}{3} \\
 }
 
 \address{
     \affil{1}{Sungkyunkwan University, Department of Physics, }{\texttt{atompioneer@g.skku.edu}}
     \affil{2}{Sungkyunkwan University, Systems Management Engineering, }{\texttt{bout123456@naver.com}}
-    \affil{3}{Sungkyunkwan University, Department of Software}{\texttt{toyu7870@naver.com}}
+    \affil{3}{Sungkyunkwan University, Department of Software, }{\texttt{toyu7870@naver.com}}
 }
 
 %% If all authors have the same address %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,12 +99,29 @@
 
 이런 이유로, 성균튜터링 신청 사이트를 이번 프로젝트 주제로 선정하여 성균튜터링 신청 사이트를 제작하고자 한다.
 
-\section{Sketch}
-\vspace*{-3mm}
-학교 수강신청 사이트와 유사할 것으로 예상.(그림 첨부 요망)
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width = 0.15\textwidth]{Fig2.png}
+%     \caption{로그인}
+% \end{figure}
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width = 0.15\textwidth]{Fig3.png}
+%     \caption{튜터링 신청(튜터)}
+% \end{figure}
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width = 0.3\textwidth]{Fig4.png}
+%     \caption{튜터링 신청(튜티)}
+% \end{figure}
+
+% \vspace*{-3mm}
+
 
 \section{Features}
-\vspace*{-3mm}
 
 \subsection{로그인 기능}
 학번(id), 이름(혹은 비밀번호)를 통해 로그인한다.
@@ -186,6 +203,18 @@ JS code에 http request 송수신과 관련된 코드가 추가되어야 한다.
 
 \subsection{crawling}
 학교 GLS에 존재하는 과목을 끌어와 AWS 서버에 저장할 것이다. 튜터링 과목명을 튜터가 직접 입력하도록 할 경우, 같은 과목이 다르게 저장될 수 있기 때문이다. 
+
+
+\section{Sketch}
+그림 2 참고.
+
+\begin{wrapfigure}{l}{0.45\textwidth}
+    \includegraphics[width = 0.22\textwidth]{Fig2.png}
+    \includegraphics[width = 0.22\textwidth]{Fig3.png}
+    \includegraphics[width = 0.42\textwidth]{Fig4.png}
+    \caption{(a) 로그인, (b) 튜터링 신청(튜터), (c) 튜터링 신청(튜티)}
+\end{wrapfigure}
+
 
 % \bibliographystyle{ieee_fullname}
 % \bibliography{references}
