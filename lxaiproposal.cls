@@ -119,8 +119,8 @@
    }%
 }
 \long\def\@resumeanglais{}
-\newcommand{\frenchabstract}{\resumefrancais}
-\newcommand{\englishabstract}{\resumeanglais}
+% \newcommand{\frenchabstract}{\resumefrancais}
+% \newcommand{\englishabstract}{\resumeanglais}
 %
 % QUESTION DES RESUMES
 %
@@ -219,7 +219,7 @@
      \textbf{R\'esum\'e -- }{\small \@resumefrancais \par}%
      \vskip 0.5 cm%
   \fi%
-  \textbf{Abstract -- }{\small \@resumeanglais \par}%
+%   \textbf{Abstract -- }{\small \@resumeanglais \par}%
   \par%
   \vskip 1.0cm%
 }
