@@ -1,16 +1,22 @@
 
 
-
-
-
-
-
 // check id, pwd
 
 
 // login button
 function enterUrl() {
-    location.href = 'application.html'
+    // id, pw correct/wrong check
+    if (true) {
+        // mentor/mentee check
+        if (true) {
+            location.href = 'application_mentee.html'
+        } else {
+            location.href = 'application_mentor.html'
+        }
+
+    } else {
+        alert('Wrong id or pwd')
+    }
 }
 loginBtn.addEventListener('click', enterUrl)
 
