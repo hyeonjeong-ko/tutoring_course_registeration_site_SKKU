@@ -1,0 +1,97 @@
+head {}
+
+body {
+    margin: 0px;
+    background: #e9e9e9;
+    font-family: '나눔고딕', sans-serif;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+form {
+    background-color: antiquewhite;
+}
+
+ul {
+    background-color: #ffdab9;
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #000000;
+    padding: 8px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+li a.current {
+    background-color: #ff6347;
+    color: white;
+}
+
+li a:hover:not(.current) {
+    background-color: #CD853F;
+    color: white;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+}
+
+#login_form {
+    position: absolute;
+    left: 0 auto;
+    background: #ffffff;
+    width: 400px;
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 20px;
+    border-top: 5px solid #59aa59;
+}
+
+#status_form {
+    float: left;
+
+    background: #ffffff;
+    width: 300px;
+    height: 400px;
+    margin-left: 10px;
+}
+
+#application_form {
+    margin-left: 310px;
+
+}
+
+#search_form {
+    overflow: auto;
+    background: #ffffff;
+    margin-left: 320px;
+    margin-right: 10px;
+    width: auto;
+    height: 400px;
+}
+
+#curApplication_form {
+    overflow: auto;
+    background: #ffffff;
+    margin-top: 10px;
+    margin-left: 320px;
+    margin-right: 10px;
+    width: auto;
+    height: 300px;
+}
+
+div {
+    display: block;
+}
