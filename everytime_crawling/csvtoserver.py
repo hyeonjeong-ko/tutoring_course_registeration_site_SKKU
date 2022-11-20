@@ -23,3 +23,4 @@ if __name__ == "__main__":
             temp2["professor"] = row[5]
 
             print(temp2)
+            
