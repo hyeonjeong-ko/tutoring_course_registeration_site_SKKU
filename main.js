@@ -17,7 +17,6 @@ function enterUrl() {
         (data) => {
             if(data.success){
                 location.href = 'application_mentee.html' //로그인 성공
-
             }
             else{
                 alert('Wrong id or pwd') //로그인 실패
@@ -46,7 +45,6 @@ document.onkeyup = function (command) {
         enterUrl()
     }
 }
-
 
 //https 
 const serverURL = "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev"
