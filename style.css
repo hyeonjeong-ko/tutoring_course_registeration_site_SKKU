@@ -93,14 +93,14 @@ button {
     overflow: hidden;
     background-color: antiquewhite;
     margin-left: 10px;
-    margin-right: 10px;
+    text-align: center;
 }
 
 .tab label {
     font-size: 18px;
     cursor: pointer;
     float: left;
-    width: 25%;
+    width: 33%;
     text-align: center;
     padding: 15px 0;
     font-weight: bold;
