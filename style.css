@@ -22,6 +22,21 @@ button {
 
 }
 
+h1 {
+    color: white;
+    background-color: #59aa59;
+    text-align: left;
+    margin: 10px;
+    padding: 5px;
+}
+
+h4 {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+select {}
+
 #login_form {
     position: absolute;
     left: 0 auto;
@@ -35,7 +50,6 @@ button {
 
 #status_form {
     float: left;
-
     background: #ffffff;
     width: 300px;
     height: 400px;
@@ -62,11 +76,21 @@ button {
 #curApplication_form {
     overflow: auto;
     background: #ffffff;
-    margin-top: 10px;
+    margin-top: 60px;
     margin-left: 320px;
     margin-right: 10px;
     width: auto;
     height: 300px;
+}
+
+#tutorLecture_form {
+    float: left;
+    text-align: left;
+    background-color: #ffffff;
+    width: 48%;
+    height: 500px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 #tab-1:checked~.tab label:nth-child(1),
@@ -118,19 +142,20 @@ button {
     margin-top: 10px;
 }
 
-#notice_box{
+#notice_box {
     float: left;
     display: flex;
     justify-content: flex-start;
     text-align: left;
-    padding:5px;
-    margin:30px;
+    padding: 5px;
+    margin: 30px;
     margin-top: 10px;
 }
 
 h3 {
     font-weight: bold;
 }
+
 h4 {
     font-weight: bold;
     font-size: 20px;
@@ -138,5 +163,5 @@ h4 {
 }
 
 #notice_img {
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }

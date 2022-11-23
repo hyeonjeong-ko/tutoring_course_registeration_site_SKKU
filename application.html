@@ -1,158 +1,153 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>멘토링 수강신청</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css" />
-  </head>
+</head>
 
-  <body>
+<body>
     <div>
-      <h1
-        style="
-          color: white;
-          background-color: #59aa59;
-          text-align: left;
-          margin: 10px;
-          padding: 5px;
-        "
-      >
-        성균관대학교 멘토링 수강신청
-      </h1>
+        <h1>
+            성균관대학교 멘토링 수강신청
+        </h1>
     </div>
 
     <div id="status_form">
-      <div>
-        <img src="SKKU Logo1.jpg" style="margin-top: 10px" width="120" />
-        <br /><br />
-      </div>
-      <div>
-        <b>이름 :</b> <br />
-        <b>학번 :</b> <br />
-        <b>학위과정 :</b> <br />
-        <b>학과(전공) :</b>
-        <br /><br />
-        <button type="button" id="loginBtn">로그아웃</button> <br /><br />
-        <button type="button" id="loginBtn">성균튜터링매뉴얼다운로드</button>
-      </div>
+        <div>
+            <img src="SKKU Logo1.jpg" style="margin-top: 10px" width="120" />
+            <br /><br />
+        </div>
+        <div>
+            <b>이름 :</b> <br />
+            <b>학번 :</b> <br />
+            <b>학위과정 :</b> <br />
+            <b>학과(전공) :</b>
+            <br /><br />
+            <button onclick="location.href='index.html'">로그아웃</button> <br /><br />
+            <button type="button" id="downManual">성균튜터링매뉴얼다운로드</button>
+        </div>
     </div>
 
     <div id="application_form">
-      <input type="radio" id="tab-1" name="show" checked />
-      <input type="radio" id="tab-2" name="show" />
-      <input type="radio" id="tab-3" name="show" />
-      <input type="radio" id="tab-4" name="show" />
+        <input type="radio" id="tab-1" name="show" checked />
+        <input type="radio" id="tab-2" name="show" />
+        <input type="radio" id="tab-3" name="show" />
+        <input type="radio" id="tab-4" name="show" />
 
-      <div class="tab">
-        <label for="tab-1">공지사항</label>
-        <label for="tab-2">수강신청</label>
-        <label for="tab-3">전공수업조회</label>
-      </div>
-
-      <div class="content">
-        <div class="content-dis">
-          <div id="notice_box">
-            <img id="notice_img" src="tutoring_img.png">
-            <h3>◈ 성균튜터링이란?</h3>
-
-            <p>
-              해당과목에서 A이상 학점을 받은 튜터와 학습에 도움을 받고자 하는
-              튜티들이 그룹학습을 할 수 있도록 매칭하고 지원하는 프로그램 ※이번
-              학기 성균튜터링은 "온라인(실시간 화상) 또는 온/오프라인 혼합"
-              방식으로 운영됩니다. (코로나 확산에 따라 변경될 수 있음)
-            </p>
-            <h3>◈ 신청방법</h3>
-            <p>
-              <h4>1)신청과목: 이번 학기 개설 과목</h4>
-              -튜터: 이번 학기 개설 과목 중 취득학점이 A이상인 과목(본교 재학중인 학부생에 한함)<br>
-            -튜티: 이번 학기 수강하는 과목 중 튜터링 희망 과목으로 신청서에 작성<br />
-            </p>
-            <p>
-            <h4>2)신청자격 및 링크</h4>
-              -튜터: 신청과목의 취득학점이 A이상인 학부생 <br>
-               -튜티: 이번 학기 튜터링 과목의 수강생 <br>
-              http://bit.ly/skkututee<br />
-            </p>
-            <p>
-                <h4>3)모집기간</h4>
-                ~ 9월 7일(수), 9월 14일(수) 결과 발표→홈페이지 및 카페공지
-                  <br>
-            </p>
-            <br>
-            <h3>◈ 이수기준</h3>
-            <p>
-                1)온라인 OT 수강<br>
-                2)10회 & 15시간 튜터링 진행 (+매회 활동보고서 작성)<br>
-                3)현장모니터링 1회 필수<br>
-            </p><br />
-
-            <h3>◈ 이수혜택</h3>
-            <p>
-            1)공통: 팀 활동지원금 최대15만원, 3품제 창의품 비교과 시간인정<br />
-            2)튜터: 3품제 인성품 교내봉사(최대 20시간)<br />
-            3)우수활동튜터: 상장 및 시상금<br />
-            4)최우수튜터: 교환학생 선발 가점<br />
-            </p><br />
-
-            <h3>◈ 유의사항</h3>
-            <p>
-                1) 2022학년도 학사일정에 따라 운영일정 및 수료기준이 변동될 수 있습니다.<br>
-                2) 지원자격에 위배되는 경우에는 OT 이후에도 선발이 취소될 수 있습니다.<br>
-                3) 튜터는 활동 전에 아이캠퍼스 온라인 OT를 반드시 수강해야 합니다. (추후 튜터에게 개별 안내)<br>
-                4) 이번 한 학기 동안 10회 & 15시간 이상 참여해야하므로, 튜터와 튜티 모두 책임감을 가지고 신청하시기 바랍니다.<br>
-                노쇼(No-Show, 특별한 사유 없이 취소/불참)의 경우, 추후 교육개발센터의 프로그램 참여에 제한이 있습니다.<br>
-                5) 튜터-튜티가 사전에 팀을 이루어 그룹(튜터 포함 6인 이내)으로 신청 가능합니다. 단, 이 경우에도 모든 구성원들이
-                신청링크에 개별 접속하여 신청해주세요.<br>
-                6) 공지를 숙지하지 않아 발생한 문제는 교육개발센터에서 책임지지 않습니다.<br>
-            </p><br />
-
-            <h3>◈ 튜터링 신청 과목 현황(22.9.5 기준)</h3>
-            <p>
-                ※ 신청된 과목 리스트이며 리스트에 없는 과목들도 튜터 튜티 모두 신청 가능합니다. <br>
-                ※ 신청했지만 리스트에 없는 경우는 튜터 튜티 모두 신청하여 매칭 예정될 과목입니다.<br>
-                ※ 해당 과목 튜터가 없는 경우 선발 불가<br>
-                ※ 해당 과목 튜티가 1명 이하인 경우 선발 불가<br>
-                ※ 해당 과목 튜티가 5명을 초과하는 경우 (선착순 선발)<br>
-            </p><br />
-
-
-
-            <footer>
-                <address>Contact webmaster for more information. 02-760-0988</address>
-            </footer>
-
-          </div>
+        <div class="tab">
+            <label for="tab-1">공지사항</label>
+            <label for="tab-2">수강신청</label>
+            <label for="tab-3">전공수업조회</label>
         </div>
-        <div class="content-dis" id= "contents">
-          수강신청 <br />
-          2번 <br />
-          <div> 으아악 </div>
+
+        <div class="content">
+            <div class="content-dis">
+                <div id="notice_box">
+                    <img id="notice_img" src="tutoring_img.png">
+                    <h3>◈ 성균튜터링이란?</h3>
+
+                    <p>
+                        해당과목에서 A이상 학점을 받은 튜터와 학습에 도움을 받고자 하는
+                        튜티들이 그룹학습을 할 수 있도록 매칭하고 지원하는 프로그램 ※이번
+                        학기 성균튜터링은 "온라인(실시간 화상) 또는 온/오프라인 혼합"
+                        방식으로 운영됩니다. (코로나 확산에 따라 변경될 수 있음)
+                    </p>
+                    <h3>◈ 신청방법</h3>
+                    <p>
+                    <h4>1)신청과목: 이번 학기 개설 과목</h4>
+                    -튜터: 이번 학기 개설 과목 중 취득학점이 A이상인 과목(본교 재학중인 학부생에 한함)<br>
+                    -튜티: 이번 학기 수강하는 과목 중 튜터링 희망 과목으로 신청서에 작성<br />
+                    </p>
+                    <p>
+                    <h4>2)신청자격 및 링크</h4>
+                    -튜터: 신청과목의 취득학점이 A이상인 학부생 <br>
+                    -튜티: 이번 학기 튜터링 과목의 수강생 <br>
+                    <a href=http://bit.ly/skkututee target="_blank">http://bit.ly/skkututee</a><br />
+                    </p>
+                    <p>
+                    <h4>3)모집기간</h4>
+                    ~ 9월 7일(수), 9월 14일(수) 결과 발표→홈페이지 및 카페공지
+                    <br>
+                    </p>
+                    <br>
+                    <h3>◈ 이수기준</h3>
+                    <p>
+                        1)온라인 OT 수강<br>
+                        2)10회 & 15시간 튜터링 진행 (+매회 활동보고서 작성)<br>
+                        3)현장모니터링 1회 필수<br>
+                    </p><br />
+
+                    <h3>◈ 이수혜택</h3>
+                    <p>
+                        1)공통: 팀 활동지원금 최대15만원, 3품제 창의품 비교과 시간인정<br />
+                        2)튜터: 3품제 인성품 교내봉사(최대 20시간)<br />
+                        3)우수활동튜터: 상장 및 시상금<br />
+                        4)최우수튜터: 교환학생 선발 가점<br />
+                    </p><br />
+
+                    <h3>◈ 유의사항</h3>
+                    <p>
+                        1) 2022학년도 학사일정에 따라 운영일정 및 수료기준이 변동될 수 있습니다.<br>
+                        2) 지원자격에 위배되는 경우에는 OT 이후에도 선발이 취소될 수 있습니다.<br>
+                        3) 튜터는 활동 전에 아이캠퍼스 온라인 OT를 반드시 수강해야 합니다. (추후 튜터에게 개별 안내)<br>
+                        4) 이번 한 학기 동안 10회 & 15시간 이상 참여해야하므로, 튜터와 튜티 모두 책임감을 가지고 신청하시기 바랍니다.<br>
+                        노쇼(No-Show, 특별한 사유 없이 취소/불참)의 경우, 추후 교육개발센터의 프로그램 참여에 제한이 있습니다.<br>
+                        5) 튜터-튜티가 사전에 팀을 이루어 그룹(튜터 포함 6인 이내)으로 신청 가능합니다. 단, 이 경우에도 모든 구성원들이
+                        신청링크에 개별 접속하여 신청해주세요.<br>
+                        6) 공지를 숙지하지 않아 발생한 문제는 교육개발센터에서 책임지지 않습니다.<br>
+                    </p><br />
+
+                    <h3>◈ 튜터링 신청 과목 현황(22.9.5 기준)</h3>
+                    <p>
+                        ※ 신청된 과목 리스트이며 리스트에 없는 과목들도 튜터 튜티 모두 신청 가능합니다. <br>
+                        ※ 신청했지만 리스트에 없는 경우는 튜터 튜티 모두 신청하여 매칭 예정될 과목입니다.<br>
+                        ※ 해당 과목 튜터가 없는 경우 선발 불가<br>
+                        ※ 해당 과목 튜티가 1명 이하인 경우 선발 불가<br>
+                        ※ 해당 과목 튜티가 5명을 초과하는 경우 (선착순 선발)<br>
+                    </p><br />
+
+                    <footer>
+                        <address>Contact webmaster for more information. 02-760-0988</address>
+                    </footer>
+
+                </div>
+            </div>
+            <div class="content-dis" id="contents">
+                수강신청 <br />
+                <select id="1">
+                    <option value="111">111</option>
+                    <option value="222">222</option>
+                    <option value="333">333</option>
+                </select><br>
+                2번 <br />
+                2번 <br />
+                2번 <br />
+                2번 <br />
+                2번 <br />
+                2번 <br />
+                2번 <br />
+                2번 <br />
+                2번 <br />
+            </div>
+            <div class="content-dis">전공수업조회</div>
+            <div class="content-dis">교양수업조회</div>
         </div>
-        <div class="content-dis">전공수업조회</div>
-        <div class="content-dis">교양수업조회</div>
-      </div>
     </div>
+
+    <button type="button" id="tutorLectureBtn" style="float: right; margin: 5px 10px; width:200px; height:50px"
+        onclick="tutorLecture()">튜터링과목등록</button>
 
     <div id="curApplication_form">
-      <b>내 수강신청 내역 창</b> <br />
-      <b>아무거나</b> <br />
+        <b>내 수강신청 내역 창</b> <br />
 
     </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-      crossorigin="anonymous"
-    ></script>
     <script type="text/javascript" src="main.js"></script>
-    <script type="text/javascript" src="application.js"></script>
+</body>
 
-  </body>
 </html>

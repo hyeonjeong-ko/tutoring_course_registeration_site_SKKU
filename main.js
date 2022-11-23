@@ -7,8 +7,8 @@
 function enterUrl() {
     // id, pw correct/wrong check
     const id = "2020315791"; //Correct example
-    const name = "Ko"; //Correct example
-
+    const name = "Ko"; //Correct examp
+    location.href = 'application.html'
     // const id = "2020312141"; //Wrong example
     // const name = "Jun"; //Wrong example 
     const check = logincheck(id, name); //아래 logincheck 함수를 확인하세요. return 형식은 Promise입니다.
@@ -26,8 +26,6 @@ function enterUrl() {
     )
 }
 
-loginBtn.addEventListener('click', enterUrl)
-
 // login with enter button
 document.onkeyup = function (command) {
     let key = command.keyCode
@@ -35,9 +33,19 @@ document.onkeyup = function (command) {
         enterUrl()
     }
 }
+const loginBtn = document.getElementById("loginBtn")
+loginBtn.addEventListener('click', enterUrl)
+
+
+// tutoring lecture application
+function tutorLecture() {
+    window.open("tutorLecture.html", "tutor Lecture Application", "width=800, height=600, left=300, top=200")
+}
+
 
 //https 
 const serverURL = "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev"
+
 
 
 //login function
