@@ -6,8 +6,8 @@
 // login button
 function enterUrl() {
     // id, pw correct/wrong check
-    const id = "2020312141"; //Correct example
-    const name = "Jung"; //Correct example
+    const id = "2020315791"; //Correct example
+    const name = "Ko"; //Correct example
 
     // const id = "2020312141"; //Wrong example
     // const name = "Jun"; //Wrong example 
@@ -17,6 +17,7 @@ function enterUrl() {
         (data) => {
             if (data.success) {
                 location.href = 'application.html' //로그인 성공
+
             }
             else {
                 alert('Wrong id or pwd') //로그인 실패
@@ -38,23 +39,6 @@ document.onkeyup = function (command) {
 //https 
 const serverURL = "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev"
 
-//get all courses
-async function allcourses() {
-    return await fetch(serverURL + "/getallcourse", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    })
-        .then((response) => response.json());
-}
-
-const courses = allcourses();
-console.log(courses);
-//promise를 parsing하는건 너무 어렵고요..(찾아봤는데 불가능한거 같습니다.) 따라서 다음 방법을 권장합니다.
-courses.then(function (result) {
-    //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
-});
 
 //login function
 //return is true/false
@@ -71,42 +55,6 @@ async function logincheck(id, name) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
-    })
-        .then((response) => response.json());
-}
-
-//튜터링 수강 신청 - 튜티
-//return is true/false
-async function tuteeApplication(tutee_id, course_id) {
-    return await fetch(serverURL + "/addtutee", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: {
-            "id": course_id,
-            "tutee": tutee_id,
-        }
-    })
-        .then((response) => response.json());
-}
-
-//튜터링 과목 등록 - 튜터
-//return is true/false
-//name : 과목명, professor : 교수 이름, tutor_id : 튜터 학번, tutees : 튜티들 학번, 튜티가 여러명이면 학번을 ","로 구분
-async function tutorApplicatoin(id, name, professor, tutor_id, tutees) {
-    return await fetch(serverURL + "addcourse", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: {
-            "id": id,
-            "name": name,
-            "professor": professor,
-            "tutor": tutor_id,
-            "tutee": tutees
-        }
     })
         .then((response) => response.json());
 }
