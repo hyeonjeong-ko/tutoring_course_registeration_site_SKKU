@@ -168,7 +168,8 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="main.js"></script>
-    <script type="text/javascript" src="application copy.js"></script>
+    <script type="text/javascript" src="application.js"></script>
+    <!-- <script type="text/javascript" src="application copy.js"></script> -->
 
     <script>
 
@@ -203,94 +204,75 @@ function insertdata(day,fout,fin,balance) {
 
 var tablebox = document.getElementById("contents")
 //tablebox.innerHTML="3"
+const response = allcourses();
 
 //promise를 parsing하는건 너무 어렵고요..(찾아봤는데 불가능한거 같습니다.) 따라서 다음 방법을 권장합니다.
-response.then( (result) => {
-    Object.keys(result.courses)
-        .forEach(element => {
-            let temp = {
+    response.then( (result) => {
+        Object.keys(result.courses)
+            .forEach(element => {
+                let temp = {
 
-            };
-            temp.id         = result["courses"][element]["id"];
-            temp.name       = result["courses"][element]["name"];
-            temp.professor  = result["courses"][element]["professor"];
-            temp.tutor      = result["courses"][element]["tutor"];
-            temp.tutee      = result["courses"][element]["tutee"];
+                };
+                temp.id         = result["courses"][element]["id"];
+                temp.name       = result["courses"][element]["name"];
+                temp.professor  = result["courses"][element]["professor"];
+                temp.tutor      = result["courses"][element]["tutor"];
+                temp.tutee      = result["courses"][element]["tutee"];
 
-            //요런식으로 추가하시면 될 것 같습니다.
-            // let new_course = document.createElement("option");
-            // new_course.textContent = temp.name+temp.tutee;
-            // contents.appendChild(new_course);
-            
-            //table 생성
-            console.log(temp);
-            tablebox.innerHTML = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tutee);
-            tmp = tablebox.innerHTML;
-            tabletext = tmp.replace('NaN','');
-            tablebox.innerHTML = tabletext;
-            
+                //요런식으로 추가하시면 될 것 같습니다.
+                // let new_course = document.createElement("option");
+                // new_course.textContent = temp.name+temp.tutee;
+                // contents.appendChild(new_course);
+                
+                //table 생성
+                console.log(temp.id);
+                tablebox.innerHTML = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tutee);
+                tmp = tablebox.innerHTML;
+                tabletext = tmp.replace('NaN','');
+                tablebox.innerHTML = tabletext;
+                
 
-            var course_select = document.getElementById("course_select");
-            var option=document.createElement("option");
-            option.text=temp.name;
-            option.value=temp.id ;
-            course_select.add(option);
+                var course_select = document.getElementById("course_select");
+                var option=document.createElement("option");
+                option.text=temp.name;
+                option.value=temp.id ;
+                course_select.add(option);
 
 
 
-            // data = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tutee);
-            // tmp = tablebox.innerHTML;
-            // tabletext = tmp.replace('NaN','');
-            // tablebox.innerHTML = tabletext;
+                // data = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tutee);
+                // tmp = tablebox.innerHTML;
+                // tabletext = tmp.replace('NaN','');
+                // tablebox.innerHTML = tabletext;
 
-            // tablebox.innerHTML = data
-            
+                // tablebox.innerHTML = data
+                
 
-            // courses.push(courses_name[element]) -> 요렇게 해서 밖에서 console.log(courses)라고 해도 작동하지 않습니다. undefined가 나와요.
-        });
-    //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
+                // courses.push(courses_name[element]) -> 요렇게 해서 밖에서 console.log(courses)라고 해도 작동하지 않습니다. undefined가 나와요.
+            });
+        //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
     });
-
-//모든 전공과목을 받아오는 코드는 여기 있고, 추가하는 방식은 위의 courses에서 추가한 방식과 정확히 같을겁니다.
-allLectures.then((result) => {
-    Object.keys(result.lectures)
-        .forEach(element => {
-            let temp = {
-
-            };
-            temp.college    = result["courses"][element]["college"];
-            temp.department = result["courses"][element]["department"];
-            temp.lecture_id = result["courses"][element]["lecture_id"];
-            temp.name       = result["courses"][element]["name"];
-            temp.professor  = result["courses"][element]["professor"];
-
-            console.log(temp);
-        });
-    });
-
 
 
     </script>
 
+    <script>
+        $(document).ready(function(){
+        console.log("sbia")
+        $('.under_tab').css("display","none");
 
 
-<script>
-      $(document).ready(function(){
-      console.log("sbia")
-      $('.under_tab').css("display","none");
+        $("#course_enroll").on("click", function () {
+            $('.under_tab').show();
+        });
 
+        $(".other_tab").on("click", function () {
+            $('.under_tab').hide();
+        });
 
-      $("#course_enroll").on("click", function () {
-          $('.under_tab').show();
+    // process.. 
     });
-
-    $(".other_tab").on("click", function () {
-          $('.under_tab').hide();
-    });
-
-// process.. 
-});
-</script>
+    </script>
 </body>
 
 </html>

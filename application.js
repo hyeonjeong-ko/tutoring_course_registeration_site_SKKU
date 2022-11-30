@@ -139,11 +139,11 @@ mycourses.then( (result) => {
             let temp = {
 
             };
-            temp.college    = result["courses"][element]["college"];
-            temp.department = result["courses"][element]["department"];
-            temp.lecture_id = result["courses"][element]["lecture_id"];
-            temp.name       = result["courses"][element]["name"];
-            temp.professor  = result["courses"][element]["professor"];
+            temp.college    = result["lectures"][element]["college"];
+            temp.department = result["lectures"][element]["department"];
+            temp.lecture_id = result["lectures"][element]["lecture_id"];
+            temp.name       = result["lectures"][element]["name"];
+            temp.professor  = result["lectures"][element]["professor"];
 
             console.log(temp);
         });
