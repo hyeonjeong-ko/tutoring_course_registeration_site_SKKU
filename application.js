@@ -354,6 +354,8 @@ function createUserTable(p1,p2,p3,p4,p5){
 return tbl + th + user_result + tbl2 ;
 }
 
+
+
     //내 수강과목 조회
     mycourses.then( (result) => {
         let curApplication_form = document.querySelector("#curApplication_form");
@@ -382,3 +384,4 @@ return tbl + th + user_result + tbl2 ;
         });
 
     });
+
