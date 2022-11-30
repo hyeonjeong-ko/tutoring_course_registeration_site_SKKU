@@ -165,3 +165,73 @@ h4 {
 #notice_img {
     margin-bottom: 10px;
 }
+
+.under_tab {
+    height:40px;
+    display: flex;
+    justify-content: space-between;
+    padding:5px;
+
+    overflow: hidden;
+    background-color:  rgb(0, 0, 110);
+    margin-left: 10px;
+    text-align: center;
+    color:whitesmoke;
+
+}
+
+.under_tab1 {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.btn_1{
+    background-color: #59aa59;
+    margin:3px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+#course_select{
+    margin-left: 5px;
+}
+
+
+
+table {
+    width:100%;
+    margin:0px;
+  }
+
+  table,
+  td,
+  th {
+    border-collapse: collapse;
+    border: 3px solid #b0b699;
+    padding: 10px;
+  }
+
+  th {
+    background-color: #7CBC42;
+    color: rgb(255, 255, 255);
+    border: 3px solid #D4DAB9;
+  }
+
+  tr:nth-child(even) {
+    background-color: #D4DAB9;
+    color: rgb(0, 0, 0);
+    border: 3px solid #D4DAB9;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+  }
+
+  .content {
+    margin: 0px;
+    margin-top:0px;
+    margin-bottom: 0px;
+  }

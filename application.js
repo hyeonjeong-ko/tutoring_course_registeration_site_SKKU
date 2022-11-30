@@ -11,6 +11,17 @@ async function allcourses() {
         .then((response) => response.json());
 }
 
+//get all lectures
+async function allLecture() {
+    return await fetch(URL + "/getallLecture", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then((response) => response.json());
+}
+
 //수강신청한 튜터링 과목을 받아옵니다. user_id : 로그인 한 후의 유저의 id(학번)을 받아옵니다. 현재의 경우 2020315791
 async function allmycourses(user_id) {
     let data = {
@@ -81,6 +92,7 @@ response.then( (result) => {
             temp.professor  = result["courses"][element]["professor"];
             temp.tutor      = result["courses"][element]["tutor"];
             temp.tutee      = result["courses"][element]["tutee"];
+            temp.tuteeNum   = result["courses"][element]["tuteeNum"];
 
             //요런식으로 추가하시면 될 것 같습니다.
             let new_course = document.createElement("b");
@@ -94,6 +106,7 @@ response.then( (result) => {
 
 let user_id = "2020315791"; // 요건 로그인 후에 받아오시죠.
 const mycourses = allmycourses(user_id);
+const allLectures = allLecture();
 
 mycourses.then( (result) => {
     let curApplication_form = document.querySelector("#curApplication_form");
@@ -118,4 +131,20 @@ mycourses.then( (result) => {
             // courses.push(courses_name[element]) -> 요렇게 해서 밖에서 console.log(courses)라고 해도 작동하지 않습니다. undefined가 나와요.
         });
     //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
+    });
+
+    allLectures.then((result) => {
+    Object.keys(result.lectures)
+        .forEach(element => {
+            let temp = {
+
+            };
+            temp.college    = result["lectures"][element]["college"];
+            temp.department = result["lectures"][element]["department"];
+            temp.lecture_id = result["lectures"][element]["lecture_id"];
+            temp.name       = result["lectures"][element]["name"];
+            temp.professor  = result["lectures"][element]["professor"];
+
+            console.log(temp);
+        });
     });
