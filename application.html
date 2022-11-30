@@ -251,6 +251,23 @@ response.then( (result) => {
     //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
     });
 
+//모든 전공과목을 받아오는 코드는 여기 있고, 추가하는 방식은 위의 courses에서 추가한 방식과 정확히 같을겁니다.
+allLectures.then((result) => {
+    Object.keys(result.lectures)
+        .forEach(element => {
+            let temp = {
+
+            };
+            temp.college    = result["courses"][element]["college"];
+            temp.department = result["courses"][element]["department"];
+            temp.lecture_id = result["courses"][element]["lecture_id"];
+            temp.name       = result["courses"][element]["name"];
+            temp.professor  = result["courses"][element]["professor"];
+
+            console.log(temp);
+        });
+    });
+
 
 
     </script>
