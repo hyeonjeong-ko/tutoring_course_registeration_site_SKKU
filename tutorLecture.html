@@ -22,37 +22,65 @@
         <input type="radio" name="grade" value="A">A
 
         <h4>2. 과목명</h4>
-        <select id="1" style="width: 95%; margin-left: 10px;">
-            <option value="111">111</option>
-            <option value="222">222</option>
-            <option value="333">333</option>
-        </select><br>
+        <input type="text" id="lecName" style="width: 95%; height: 50px; margin-left: 10px;">
 
         <h4>3. 수강한 교수명</h4>
-        <select id="1" style="width: 95%; margin-left: 10px;">
-            <option value="111">111</option>
-            <option value="222">222</option>
-            <option value="333">333</option>
-        </select>
+        <input type="text" id="proName" style="width: 95%; height: 50px; margin-left: 10px;">
 
         <h4>4. 튜터링 계획(Syllabus)</h4>
-        <input type="text" style="width: 95%; height: 100px; margin-left: 10px;">
+        <input type="text" id="sylName" style="width: 95%; height: 200px; margin-left: 10px;">
     </div>
 
     <div id="tutorLecture_form" style="float: right; text-align: left; margin-right: 10px">
         <h4>5. 지원 동기</h4>
-        <input type="text" style="width: 95%; height: 100px; margin-left: 10px;">
+        <input type="text" id="motName" style="width: 95%; height: 100px; margin-left: 10px;">
 
         <h4>6. 그룹 지원 여부</h4>
-        <input type="radio" name="group" value="O" style="margin-left: 10px">O
+        <input type="radio" name="group" value="O" style="margin-left: 10px" checked="checked">O
         <input type="radio" name="group" value="X">X
 
         <h4>6-1. 해당 멘티들의 학번</h4>
-        <input type="text" style="width: 95%; height: 100px; margin-left: 10px;">
+        <input type="text" style="width: 95%; height: 50px; margin-left: 10px;">
 
         <h4>7. 가능한 시간</h4>
         <input type="text" style="width: 95%; height: 100px; margin-left: 10px;">
     </div>
+
+    <div>
+        <button type="button" id="tutorAppButton" style="float:right; margin-top: 10px; margin-right: 10px" onclick="window.close(); return tutorApplication()">과목 등록</button>
+    </div>
+
+    <script type="text/javascript" src="application.js"></script>
+    <script>
+        const response = allcourses();
+
+        response.then( (result) => {
+        let contents = document.querySelector("#contents");
+
+        Object.keys(result.courses).forEach(element => {
+            let temp = {
+                "id": id,
+                "name": name,
+                "professor": professor,
+                "tutor": tutor_id,
+                "tutee": tutees
+            };
+            
+            temp.id         = result["courses"][element]["id"];
+            temp.name       = result["courses"][element]["name"];
+            temp.professor  = result["courses"][element]["professor"];
+            temp.tutor      = result["courses"][element]["tutor"];
+            temp.tutee      = result["courses"][element]["tutee"];
+
+            let new_course = document.createElement("b");
+            new_course.textContent = temp.name;
+            contents.appendChild(new_course);
+            console.log(temp);
+        });
+    //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
+    });
+
+    </script>
 </body>
 
 </html>
