@@ -15,7 +15,7 @@ loginBtn.addEventListener('click', function(event){
     if(id.length==0 || pwd.length==0){
         alert("Please Enter your ID and Password.");
     }else{
-        //enterUrl(id,pwd);
+        enterUrl(id,pwd);
     }
 
 
@@ -44,7 +44,9 @@ function enterUrl(id,pwd) {
             if (data.success) {
                 alert("successs");
 
-                location.href = 'application.html' //로그인 성공
+                
+
+                location.href = 'application.html?'+id+":"+pwd //로그인 성공
 
             }
             else {
