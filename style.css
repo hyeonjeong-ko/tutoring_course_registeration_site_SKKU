@@ -511,3 +511,25 @@ table {
     transform: translate(-50%, -50%);
     animation: ring 1.5s infinite;
 }
+
+
+
+
+
+
+
+#downManual{
+    margin:0px;
+    padding:0px;
+}
+
+#logout{
+    margin:0px;
+    padding:0px;
+}
+
+.bar_enrollbtn{
+    background-color: #0c471b;
+    border-radius: 5px;
+    color: whitesmoke;
+}

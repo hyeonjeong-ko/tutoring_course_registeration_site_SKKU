@@ -121,7 +121,6 @@ mycourses.then( (result) => {
             temp.professor  = result["courses"][element]["professor"];
             temp.tutor      = result["courses"][element]["tutor"];
             temp.tutee      = result["courses"][element]["tutee"];
-            
 
             //요런식으로 추가하시면 될 것 같습니다.
 /*
