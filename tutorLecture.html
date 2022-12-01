@@ -23,11 +23,11 @@
 
       <div class="selectbox_1">
         <span class="radio" id="all_list">
-            <input type="radio" id="view_all" name="viewtype" value="all" checked="">
+            <input type="radio" id="a+" name="viewtype" value="all" checked="">
             <label for="view_all"><span class="round">라디오버튼</span>A+</label>
           </span>
            <span class="radio" id="lend_list">
-              <input type="radio" id="view_live" name="viewtype" value="">
+              <input type="radio" id="a" name="viewtype" value="">
               <label for="view_live">
               <span class="round">라디오버튼</span>A</label>
            </span>
@@ -38,9 +38,9 @@
         2.신청 과목 정보
       </h4>
       <div style="margin-left:30px;display: flex; text-align: center;">
-        <div style="margin-top:5px">  <span class="q2">과목명</span><input type="text" class="lecName" style="width:100px;height:30px;margin-bottom: 20px;"/></div>
+        <div style="margin-top:5px">  <span class="q2">과목명</span><input type="text" id="lecNam" style="width:100px;height:30px;margin-bottom: 20px;"/></div>
           
-           <div style="margin-top:5px"><span class="q2">교수명</span><input type="text" class="lecName" style="width:100px;height:30px;"/></div> 
+           <div style="margin-top:5px"><span class="q2">교수명</span><input type="text" id="profName" style="width:100px;height:30px;"/></div> 
            <div style="margin-bottom:10px;">
             <span style="margin-top:5px;" class=" check_btn material-symbols-outlined">
             check
@@ -52,7 +52,7 @@
       <h4>4. 튜터링 계획(Syllabus)</h4>
       <div class="q4">
         <div style="margin-left: 30px;">학생들에게 보여질 것이기때문에 상세히 적어주시면 좋습니다.</div>
-        <textarea class="syllabustxt" style="color:black" cols="40" rows="10" > </textarea>
+        <textarea class="syllabustxt syllabustxt1" style="color:black" cols="40" rows="10" > </textarea>
       </div>
       </div>
 
@@ -62,28 +62,29 @@
       style="float: right; text-align: left; margin-right: 10px"
     >
       <h4>5. 지원 동기</h4>
-      <textarea class="syllabustxt" style="color:black" cols="40" rows="5" > </textarea>
+      <textarea class="usertext syllabustxt" style="color:black" cols="40" rows="5" > </textarea>
 
       <h4>6. 그룹 지원 여부</h4>
       <button id="btn_toggle">그룹지원시 클릭</button>
       <div id="Toggle" style="display:none">
         <h4>6-1. 해당 멘티들의 학번</h4>
-        <input type="text" style="width: 95%; height: 50px; margin-left: 10px" />
+        <input id="grouptxt" type="text" style="width: 95%; height: 50px; margin-left: 10px" />
     </div>
 
 
       <h4>7. 가능한 시간</h4>
       <div style="margin-left:40px;">
-        <span><input type="time" /></span>
+        <span><input id="starttime" type="time" /></span>
         <span>~</span>
-        <span><input type="time" /></span>
+        <span><input id="endtime" type="time" /></span>
     </div>
 
     <div>
         <button 
+        id="tutor_enroll_btn"
         class="w-btn w-btn-green"
          type="button"
-         onclick="window.close(); return tutorApplication()">
+        >
             과목등록
         </button>
 

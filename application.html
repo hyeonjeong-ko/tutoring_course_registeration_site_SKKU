@@ -33,8 +33,11 @@
             <b>학위과정 :</b> <br />
             <b>학과(전공) :</b>
             <br /><br />
-            <button onclick="location.href='index.html'">로그아웃</button> <br /><br />
+            <button id="logout" onclick="location.href='index.html'">로그아웃</button> <br /><br />
+            <a href="./◈ 성균튜터링 안내사항.hwp" download>
             <button type="button" id="downManual">성균튜터링매뉴얼다운로드</button>
+            </a>
+
         </div>
     </div>
 
@@ -68,7 +71,7 @@
                 -
                 <input type="text" name="ban" id="ban" size="4" maxlength="2" onkeydown="if(event.keyCode == 13) fastSave();">
               </div>
-              <div class="bar_enrollbtn" onclick="fastSave()">수강신청</div>
+              <div id="searchbtn" class="bar_enrollbtn">수강신청</div>
             </div>
         </div>
         </div>
@@ -168,12 +171,22 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
+    
+
+      
+    <script>
+        //let enroll_table = document.getElementsByClassName('.enroll_table');
+        //var arr = Array.prototype.slice.call( enroll_table )
+
+        
+
+    
+    
+    </script>
+    
+
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="application.js"></script>
-  
-    <script>
-
-    </script>
 
 
 
@@ -191,6 +204,8 @@
     $(".other_tab").on("click", function () {
           $('.under_tab').hide();
     });
+
+
 
 // process.. 
 });
