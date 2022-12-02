@@ -161,8 +161,7 @@
         </div>
     </div>
 
-    <button type="button" id="tutorLectureBtn" style="float: right; margin: 5px 10px; width:200px; height:50px"
-        onclick="tutorLecture()">튜터링과목등록</button>
+    <button type="button" id="tutorLectureBtn" style="float: right; margin: 5px 10px; width:200px; height:50px">튜터링과목등록</button>
 
     
         <div id="curApplication_form">
@@ -229,15 +228,23 @@
     <script type="text/javascript" src="tutorLecture.js"></script>
 
     <script>
+
         let temp = location.href.split("?");
         let data = temp[1].split(":");
         const id = data[0];
         const name = data[1];
 
+<<<<<<< HEAD
         document.getElementById("info_name").innerText = name;
         document.getElementById("info_studentnum").innerText = id;
 
         
+=======
+        let btn_tutorLecture = document.getElementById("tutorLectureBtn");
+        btn_tutorLecture.addEventListener('click', function(){
+            tutorLecture(name, id);
+        });
+>>>>>>> 6f88ed53c361ec72e61bc6c65a2a014d0cfc16b3
 
         console.log(id + ", "+ name);
 

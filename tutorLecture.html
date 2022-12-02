@@ -41,7 +41,7 @@
             <div style="margin-top:5px"><span class="q2">교수명</span><input type="text" id="profName"
                     style="width:100px;height:30px;" /></div>
             <div style="margin-bottom:10px;">
-                <span style="margin-top:5px;" class=" check_btn material-symbols-outlined">
+                <span style="margin-top:5px;" class=" check_btn material-symbols-outlined" id="check_btn">
                     check
                 </span>
             </div>
@@ -50,13 +50,13 @@
         <h4>4. 튜터링 계획(Syllabus)</h4>
         <div class="q4">
             <div style="margin-left: 30px;">학생들에게 보여질 것이기때문에 상세히 적어주시면 좋습니다.</div>
-            <textarea class="syllabustxt syllabustxt1" style="color:black" cols="40" rows="10"> </textarea>
+            <textarea class="syllabustxt syllabustxt1" style="color:black" cols="40" rows="10" id="syllabus"> </textarea>
         </div>
     </div>
 
     <div id="tutorLecture_form" style="float: right; text-align: left; margin-right: 10px">
         <h4>5. 지원 동기</h4>
-        <textarea class="usertext syllabustxt" style="color:black" cols="40" rows="5"> </textarea>
+        <textarea class="usertext syllabustxt" style="color:black" cols="40" rows="5" id="motivation"> </textarea>
 
         <h4>6. 그룹 지원 여부</h4>
         <button id="btn_toggle">그룹지원시 클릭</button>
@@ -80,43 +80,8 @@
 
         </div>
     </div>
-
-    <script type="text/javascript" src="application.js"></script>
-    <script>
-        function lecApp() {
-            const response = allcourses();
-
-            response.then( (result) => {
-
-                Object.keys(result.courses).forEach(element => {
-                    let temp = {
-                    
-                    };
-                    temp.id         = result["courses"][element]["id"];
-                    temp.name       = result["courses"][element]["name"];
-                    temp.professor  = result["courses"][element]["professor"];
-                    temp.tutor      = result["courses"][element]["tutor"];
-                    temp.tutee      = result["courses"][element]["tutee"];
+    <script type="text/javascript" src="tutorLecture.js"></script>
     
-                    const tmpName = document.getElementById("lecName")
-    
-                    if (temp.name === tmpName) {
-                        let new_course = document.createElement("b");
-                        new_course.textContent = temp.name;
-                        contents.appendChild(new_course);
-                        console.log(temp);
-                    }
-                });
-            });
-
-            window.alert("등록이 완료되었습니다.")
-            window.close()
-        }
-
-        const tutorAppButton = document.getElementById("tutor_enroll_btn")
-        tutorAppButton.addEventListener("click", lecApp)
-
-    </script>
 </body>
 
 </html>
