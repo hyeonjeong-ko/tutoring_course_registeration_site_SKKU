@@ -58,7 +58,7 @@
 
             <div class="under_tab1">
               <div class="course_select_btn">과목 신청</div>
-              <select id="course_select" >
+              <select name="sugang" id="course_select">
             </select>
             </div>
             
@@ -319,6 +319,23 @@
     $(".other_tab").on("click", function () {
           $('.under_tab').hide();
     });
+
+
+    //네비바 수강신청기능1
+     //선택한 select 과목값
+    $(".course_select_btn").on("click", function () {
+        $("select[name=sugang]").change(function(){
+        let selectcourse = $(this).val();
+        console.log(selectcourse)
+        //선택 selectcourse value값(학수번호) 가져오기
+    // DB에 있는지 확인후 해당과목을 mycourse에 추가한다
+    // 선택한 option의 value 값
+    });
+    
+    
+
+  
+});
 
 
 
