@@ -1,5 +1,12 @@
 const URL = "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev"
 
+let temp = location.href.split("?");
+let data = temp[1].split(":");
+const id = data[0];
+const name = data[1];
+
+console.log(id);
+
 //get all courses
 async function allcourses() {
     return await fetch(URL + "/getallcourse", {
@@ -37,7 +44,23 @@ async function allmycourses(user_id) {
         .then((response) => response.json());
 }
 
-
+//튜터링 신청
+//튜터링 수강 신청 - 튜티
+//return is true/false
+async function tuteeApplication(tutee_id, course_id) {
+    let data = {
+        "id": course_id,
+        "tutee": tutee_id,
+    };
+    return await fetch(URL + "/addtutee", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    })
+        .then((response) => response.json());
+}
 
 
 //튜터링 과목 등록 - 튜터
@@ -158,6 +181,7 @@ const allLectures = allLecture();
 
 
 let j =0;
+let course_list = [];
 
 var tablebox = document.getElementById("contents")
 response.then( (result) => {
@@ -177,49 +201,37 @@ response.then( (result) => {
 
             tablebox.innerHTML = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum, temp.schedule, j);
             j++;
+
+            course_list.push(temp.id);
             
-            tmp = tablebox.innerHTML;
+            let tmp = tablebox.innerHTML;
             tabletext = tmp.replace('NaN','');
             tablebox.innerHTML = tabletext;
 
-    
-      
-            
             let enroll_btn = document.getElementsByClassName('enroll_btn');
             let plus_btn = document.getElementsByClassName('plus_btn');
             
-
             let usertable = document.getElementsByClassName('usertable');
 
             for(let i = 0; i<enroll_btn.length;i++){
                 enroll_btn[i].addEventListener('click',function(){
-                    console.log("hi");
-                    console.log(i) //row index
-                    
-                    //신청등록버튼이벤트구현중
-                    let enroll_table = document.getElementsByClassName('.enroll_table');
-                    var arr = Array.prototype.slice.call( enroll_table )
-                    console.log(arr.length)
-                    
-                    var rowList = enroll_table.rows;
-                    console.log(rowList);
-                    let classnumber = rowList[i].cells[2].InnerHTML; 
-                    let classname = rowList[i].cells[3].InnerHTML;
-                    let prof = rowList[i].cells[4].InnerHTML;
-                    let tutor = rowList[i].cells[5].InnerHTML;
-                    let tuteenum = rowList[i].cells[6].InnerHTML;
-                    let schedule = rowList[i].cells[7].InnerHTML;
+                    // console.log("hi");
+                    // console.log(i) //row index
+                    console.log(course_list[i]);
+                    const tuteeAppRes = tuteeApplication(id, course_list[i]);
 
-                    str = 
-                    '<tr>' +
-                        '<td>' + classnumber + '</td>' + 
-                       '<td>' + classname + '</td>' +
-                       '<td>' + prof + '</td>' + 
-                       '<td>' + tutor+ '</td>' + 
-                       '<td>' + tuteenum +'/5'+ '</td>' + 
-                       '<td>' + schedule + '</td>' +                 
-                       '</tr>'
-                       
+                    tuteeAppRes.then(
+                        (result) =>{
+                            if(result.success){
+                                alert("Application Accept");
+                                window.location.reload();
+                            }
+                            else{
+                                alert("Application Rejected");
+                            }
+                        }
+                    )
+                                          
                 })
 
             //더보기
@@ -241,8 +253,7 @@ response.then( (result) => {
                 // console.log(tutor_msg);
 
                 //=============================================================
-                const courseURL =
-                "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev";
+                const courseURL = "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev";
             let temp = location.href.split("?");
         
 

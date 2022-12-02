@@ -229,22 +229,19 @@
 
     <script>
 
-        let temp = location.href.split("?");
-        let data = temp[1].split(":");
-        const id = data[0];
-        const name = data[1];
+        // let temp = location.href.split("?");
+        // let data = temp[1].split(":");
+        // const id = data[0];
+        // const name = data[1];
 
-<<<<<<< HEAD
         document.getElementById("info_name").innerText = name;
         document.getElementById("info_studentnum").innerText = id;
 
         
-=======
         let btn_tutorLecture = document.getElementById("tutorLectureBtn");
         btn_tutorLecture.addEventListener('click', function(){
             tutorLecture(name, id);
         });
->>>>>>> 6f88ed53c361ec72e61bc6c65a2a014d0cfc16b3
 
         console.log(id + ", "+ name);
 
@@ -272,6 +269,7 @@
                 temp.tutor      = result["courses"][element]["tutor"];
                 temp.tutee      = result["courses"][element]["tutee"];
                 temp.tuteeNum   = result["courses"][element]["tuteeNum"];
+                temp.schedule   = result["courses"][element]["schedule"];
 
                 temp_arr[idx] = temp;
                 idx++;
@@ -279,8 +277,8 @@
                 
             });
 
-            console.log(temp_arr);
-            console.log(typeof(temp_arr));
+            // console.log(temp_arr);
+            // console.log(typeof(temp_arr));
 
             //console.log("-----------------------------------------------");
            // console.log(temp.id,temp.name,temp.professor,temp.tutor);
@@ -290,7 +288,7 @@
                 
             let user_body = document.querySelector(".user_body");
 
-                console.log(temp_arr[key].id);
+                // console.log(temp_arr[key].id);
 
                 let my_course = document.createElement("tr");
                 my_course.innerHTML =
@@ -300,7 +298,7 @@
                        '<td>' + temp_arr[key].professor + '</td>' + 
                        '<td>' + temp_arr[key].tutor + '</td>' + 
                        '<td>' + temp_arr[key].tuteeNum +'/5'+ '</td>' + 
-                       '<td>' + '11:00~12:00/offline' + '</td>' +                 
+                       '<td>' + temp_arr[key].schedule + '</td>' +                 
                        '</tr>'
 
     
@@ -339,7 +337,8 @@
                         check2.then(
                             (data) => {
                                 if(data.success){
-
+                                    alert("Application Accept");
+                                    window.location.reload();
                                 }
                                 else{
                                     alert("Applicatoin Failed.");
@@ -372,23 +371,7 @@
                 .then((response) => response.json());
         }
 
-        //튜터링 신청
-        //튜터링 수강 신청 - 튜티
-        //return is true/false
-        async function tuteeApplication(tutee_id, course_id) {
-            let data = {
-                "id": course_id,
-                "tutee": tutee_id,
-            };
-            return await fetch(URL + "/addtutee", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data)
-            })
-                .then((response) => response.json());
-        }
+
     </script>
 
 
