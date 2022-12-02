@@ -163,6 +163,23 @@
 
     
         <div id="curApplication_form">
+            <div class="under_tab" style="text-align:center">
+                수강 신청 내역
+            </div>
+            <table class="usertable">
+            <thead>
+                <th>학수번호 - 분반</th>
+                <th>교과목명</th>
+                <th>교강사</th>
+                <th>Tutor</th>
+                <th>수강인원</th>
+                <th>수업시간/온오프</th>
+            </thead>
+            <tbody class="user_body">
+
+            </tbody>
+
+            </table>
             <b></b>
     
         </div>
@@ -200,10 +217,18 @@
         console.log(id + ", "+ name);
 
         //내 수강과목 조회
+
+        temp_arr = {
+
+        }
+        let idx=0;
+
         const mycourses = allmycourses(id);
+
         mycourses.then( (result) => {
             let curApplication_form = document.querySelector("#curApplication_form");
-        
+            
+           
         Object.keys(result.courses)
             .forEach(element => {
                 let temp = {
@@ -215,19 +240,50 @@
                 temp.tutor      = result["courses"][element]["tutor"];
                 temp.tutee      = result["courses"][element]["tutee"];
                 temp.tuteeNum   = result["courses"][element]["tuteeNum"];
-                
 
-                let my_course = document.createElement("b");
-                my_course.innerHTML = '<div class="under_tab" style="text-align:center">'+
-                    '수강 신청 내역' + '</div>' 
-                    + createUserTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum);
-                    curApplication_form.appendChild(my_course);
+                temp_arr[idx] = temp;
+                idx++;
 
                 
-            
             });
 
+            console.log(temp_arr);
+            console.log(typeof(temp_arr));
+
+            console.log("-----------------------------------------------");
+           // console.log(temp.id,temp.name,temp.professor,temp.tutor);
+            console.log("-----------------------------------------------");
+
+            for (var key in temp_arr){
+                
+            let user_body = document.querySelector(".user_body");
+
+                console.log(temp_arr[key].id);
+
+                let my_course = document.createElement("tr");
+                my_course.innerHTML =
+                    '<tr>'  +
+                        '<td>' + temp_arr[key].id + '</td>' + 
+                       '<td>' + temp_arr[key].name+ '</td>' +
+                       '<td>' + temp_arr[key].professor + '</td>' + 
+                       '<td>' + temp_arr[key].tutor + '</td>' + 
+                       '<td>' + temp_arr[key].tuteeNum +'/5'+ '</td>' + 
+                       '<td>' + '11:00~12:00/offline' + '</td>' +                 
+                       '</tr>'
+
+    
+                    user_body.appendChild(my_course); 
+            }
+
+
+            
         });
+
+
+
+
+
+
         //1.탭바에 학수번호-분반검색후 mycourse등록=======================
         const searchbtn= document.getElementById('searchbtn');
 

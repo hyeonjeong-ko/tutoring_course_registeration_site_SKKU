@@ -179,9 +179,7 @@ const allLectures = allLecture();
     return tbl + th + result + tbl2 ;
     }
 
-    // create the table row data
-function insertdata(day,fout,fin,balance) {
-};
+
 
 var tablebox = document.getElementById("contents")
 response.then( (result) => {
@@ -330,7 +328,7 @@ allLectures.then((result) => {
 
 //유저 테이블 만들기
 var user_result = '';
-function createUserTable(p1,p2,p3,p4,p5){
+function createUserTable(){
     var tbl = '<table class="usertable">';
     var tbl2 = '</table>';
     var th = '<thead>' + '<tr>' + 
@@ -342,17 +340,26 @@ function createUserTable(p1,p2,p3,p4,p5){
     '<th>' + '수업시간/온오프' + '</th>'
     +'</tr>' + '</thead>';
 
-            user_result += '<tr>' +
-             '<td>' + p1 + '</td>' + 
-            '<td>' + p2 + '</td>' +
-            '<td>' + p3 + '</td>' + 
-            '<td>' + p4 + '</td>' + 
-            '<td>' + p5 +'/5'+ '</td>' + 
-            '<td>' + '11:00~12:00/offline' + '</td>' +                 
-            '</tr>'
+//tbl + th + user_result + tbl2 
 
-return tbl + th + user_result + tbl2 ;
+return tbl + th  ;
 }
+
+
+// create the table row data
+function insertdata(p1,p2,p3,p4,p5) {
+    let user_row;
+    user_row += '<tr>' +
+    '<td>' + p1 + '</td>' + 
+   '<td>' + p2 + '</td>' +
+   '<td>' + p3 + '</td>' + 
+   '<td>' + p4 + '</td>' + 
+   '<td>' + p5 +'/5'+ '</td>' + 
+   '<td>' + '11:00~12:00/offline' + '</td>' +                 
+   '</tr>'
+
+    return user_row ;
+};
 
 
 
