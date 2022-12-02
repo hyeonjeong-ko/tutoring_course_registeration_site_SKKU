@@ -129,6 +129,7 @@ const allLectures = allLecture();
             temp.lecture_id = result["lectures"][element]["lecture_id"];
             temp.name       = result["lectures"][element]["name"];
             temp.professor  = result["lectures"][element]["professor"];
+            temp.isInCourse = result["lectures"][element]["isInCourse"];
 
             //console.log(temp);
 
@@ -152,7 +153,7 @@ const allLectures = allLecture();
 
     // table function
     var result = '';
-    function createTable(p1,p2,p3,p4,p5){
+    function createTable(p1,p2,p3,p4,p5,p6,i){
         var tbl = '<table class="enroll_table">';
         var tbl2 = '</table>';
         var th = '<thead>' + '<tr>' + 
@@ -168,18 +169,20 @@ const allLectures = allLecture();
 
                 result += '<tr>' + '<td>' + '<div class="plus_btn">'+ '+' + '</div>' + '</td>' +
                 '<td>' + '<div class="enroll_btn">' + '신청' + '</div>' + '</td>' +
-                 '<td>' + p1 + '</td>' + 
+                 '<td id= course_id' +i+'>' + p1 + '</td>' + 
                 '<td>' + p2 + '</td>' +
                 '<td>' + p3 + '</td>' + 
                 '<td>' + p4 + '</td>' + 
                 '<td>' + p5 + '/5' + '</td>' + 
-                '<td>' + '11:00~12:00/offline' + '</td>' +                 
+                '<td>' + p6 + '</td>' +                 
                 '</tr>'
 
     return tbl + th + result + tbl2 ;
     }
 
 
+
+let j =0;
 
 var tablebox = document.getElementById("contents")
 response.then( (result) => {
@@ -194,8 +197,12 @@ response.then( (result) => {
             temp.tutor      = result["courses"][element]["tutor"];
             temp.tutee      = result["courses"][element]["tutee"];
             temp.tuteeNum   = result["courses"][element]["tuteeNum"];
+            temp.schedule   = result["courses"][element]["schedule"];
 
-            tablebox.innerHTML = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum);
+
+            tablebox.innerHTML = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum, temp.schedule, j);
+            j++;
+            
             tmp = tablebox.innerHTML;
             tabletext = tmp.replace('NaN','');
             tablebox.innerHTML = tabletext;
@@ -246,13 +253,21 @@ response.then( (result) => {
 
                 //DB에서 인덱스에 해당하는 tutor명/취득성적/메시지를받아온다
                 //modal.html 를가져옴(파일확인부탁)
-                let tutor_name = document.getElementsByClassName('.plus_tutorname');
-                let tutor_score = document.getElementsByClassName('.plus_tutorscore');
-                let tutor_msg = document.getElementsByClassName('.plus_tutormsg');
+                // let tutor_name = document.getElementsByClassName('.plus_tutorname');
+                // let tutor_score = document.getElementsByClassName('.plus_tutorscore');
+                // let tutor_msg = document.getElementsByClassName('.plus_tutormsg');
+                
+                let course_id = document.getElementById("course_id" + i).innerText;
+                console.log(course_id)
 
                 // EX_ tutor_name.innerText=DB에서끌어온값
+                // console.log(tutor_name);
+                // console.log(tutor_score);
+                // console.log(tutor_msg);
 
-
+                //수정해주세요 죄송합니다 ;ㅅ;
+                location.href = "modal.html?"+course_id
+                // modal("my_modal", course_id);
                 
             })
 
@@ -273,14 +288,17 @@ response.then( (result) => {
 
     });
 
+
+
+    
 //모든 전공 과목들
 var all_result = '';
-function createTable_all(p1,p2,p3,p4,p5){
+function createTable_all(p1,p2,p3,p4,p5,p0){
     var tbl = '<table>';
     var tbl2 = '</table>';
     var th = '<thead>' + '<tr>' + 
         '<th>' + '더보기' + '</th>' +
-        '<th>' + '신청' + '</th>' + 
+        '<th>' + '신청가능 여부' + '</th>' + 
     '<th>' + '대학구분' + '</th>' +
     '<th>' + '학과' + '</th>' +
     '<th>' + '대학번호/분반' + '</th>' +
@@ -290,7 +308,7 @@ function createTable_all(p1,p2,p3,p4,p5){
 
            all_result += '<tr>' +
             '<td>' + '<div class="plus_btn">'+ '+' + '</div>' + '</td>' +
-                '<td>' + '<div class="enroll_btn  view_enrollbtn">' + '신청' + '</div>' + '</td>' +
+                '<td>' + '<div class="enroll_btn  view_enrollbtn">' + p0 + '</div>' + '</td>' +
              '<td>' + p1 + '</td>' + 
             '<td>' + p2 + '</td>' +
             '<td>' + p3 + '</td>' + 
@@ -314,13 +332,18 @@ allLectures.then((result) => {
             temp.lecture_id = result["lectures"][element]["lecture_id"];
             temp.name       = result["lectures"][element]["name"];
             temp.professor  = result["lectures"][element]["professor"];
+            temp.isInCourse = result["lectures"][element]["isInCourse"];
+            
+            let check;
+            if(temp.isInCourse) check = "가능";
+            else check = "불가"; 
 
-             //table 생성
-             //console.log(temp);
-             tablebox_all.innerHTML = createTable_all(temp.college,temp.department,temp.lecture_id,temp.name,temp.professor);
-             tmp = tablebox_all.innerHTML;
-             tabletext = tmp.replace('NaN','');
-             tablebox_all.innerHTML = tabletext;
+            //table 생성
+            //console.log(temp);
+            tablebox_all.innerHTML = createTable_all(temp.college,temp.department,temp.lecture_id,temp.name,temp.professor, check);
+            tmp = tablebox_all.innerHTML;
+            tabletext = tmp.replace('NaN','');
+            tablebox_all.innerHTML = tabletext;
 
         });
     });
@@ -328,7 +351,7 @@ allLectures.then((result) => {
 
 //유저 테이블 만들기
 var user_result = '';
-function createUserTable(){
+function createUserTable(p1,p2,p3,p4,p5, p6){
     var tbl = '<table class="usertable">';
     var tbl2 = '</table>';
     var th = '<thead>' + '<tr>' + 
@@ -340,7 +363,14 @@ function createUserTable(){
     '<th>' + '수업시간/온오프' + '</th>'
     +'</tr>' + '</thead>';
 
-//tbl + th + user_result + tbl2 
+            user_result += '<tr>' +
+            '<td>' + p1 + '</td>' + 
+            '<td>' + p2 + '</td>' +
+            '<td>' + p3 + '</td>' + 
+            '<td>' + p4 + '</td>' + 
+            '<td>' + p5 +'/5'+ '</td>' + 
+            '<td>' + p6 + '</td>' +                 
+            '</tr>'
 
 return tbl + th  ;
 }
