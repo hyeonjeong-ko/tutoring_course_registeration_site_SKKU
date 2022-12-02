@@ -153,7 +153,7 @@ const allLectures = allLecture();
 
     // table function
     var result = '';
-    function createTable(p1,p2,p3,p4,p5,p6){
+    function createTable(p1,p2,p3,p4,p5,p6,i){
         var tbl = '<table class="enroll_table">';
         var tbl2 = '</table>';
         var th = '<thead>' + '<tr>' + 
@@ -169,7 +169,7 @@ const allLectures = allLecture();
 
                 result += '<tr>' + '<td>' + '<div class="plus_btn">'+ '+' + '</div>' + '</td>' +
                 '<td>' + '<div class="enroll_btn">' + '신청' + '</div>' + '</td>' +
-                 '<td>' + p1 + '</td>' + 
+                 '<td id= course_id' +i+'>' + p1 + '</td>' + 
                 '<td>' + p2 + '</td>' +
                 '<td>' + p3 + '</td>' + 
                 '<td>' + p4 + '</td>' + 
@@ -183,6 +183,8 @@ const allLectures = allLecture();
     // create the table row data
 function insertdata(day,fout,fin,balance) {
 };
+
+let j =0;
 
 var tablebox = document.getElementById("contents")
 response.then( (result) => {
@@ -200,7 +202,9 @@ response.then( (result) => {
             temp.schedule   = result["courses"][element]["schedule"];
 
 
-            tablebox.innerHTML = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum, temp.schedule);
+            tablebox.innerHTML = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum, temp.schedule, j);
+            j++;
+            
             tmp = tablebox.innerHTML;
             tabletext = tmp.replace('NaN','');
             tablebox.innerHTML = tabletext;
@@ -251,13 +255,21 @@ response.then( (result) => {
 
                 //DB에서 인덱스에 해당하는 tutor명/취득성적/메시지를받아온다
                 //modal.html 를가져옴(파일확인부탁)
-                let tutor_name = document.getElementsByClassName('.plus_tutorname');
-                let tutor_score = document.getElementsByClassName('.plus_tutorscore');
-                let tutor_msg = document.getElementsByClassName('.plus_tutormsg');
+                // let tutor_name = document.getElementsByClassName('.plus_tutorname');
+                // let tutor_score = document.getElementsByClassName('.plus_tutorscore');
+                // let tutor_msg = document.getElementsByClassName('.plus_tutormsg');
+                
+                let course_id = document.getElementById("course_id" + i).innerText;
+                console.log(course_id)
 
                 // EX_ tutor_name.innerText=DB에서끌어온값
+                // console.log(tutor_name);
+                // console.log(tutor_score);
+                // console.log(tutor_msg);
 
-
+                //수정해주세요 죄송합니다 ;ㅅ;
+                location.href = "modal.html?"+course_id
+                // modal("my_modal", course_id);
                 
             })
 
@@ -278,6 +290,9 @@ response.then( (result) => {
 
     });
 
+
+
+    
 //모든 전공 과목들
 var all_result = '';
 function createTable_all(p1,p2,p3,p4,p5,p0){
@@ -351,7 +366,7 @@ function createUserTable(p1,p2,p3,p4,p5, p6){
     +'</tr>' + '</thead>';
 
             user_result += '<tr>' +
-             '<td>' + p1 + '</td>' + 
+            '<td>' + p1 + '</td>' + 
             '<td>' + p2 + '</td>' +
             '<td>' + p3 + '</td>' + 
             '<td>' + p4 + '</td>' + 

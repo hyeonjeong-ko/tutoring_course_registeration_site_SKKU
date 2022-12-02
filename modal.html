@@ -29,21 +29,25 @@
 
 <body>
     <div id="my_modal">
-        <div><b>튜터명:</b>&nbsp<span class="plus_tutorname" id="professor">조재민</span></div>
+        <div><b>튜터명:</b>&nbsp<span class="plus_tutorname" id="tutor">조재민</span></div>
         <div>
             <b>튜터취득성적:</b>&nbsp<span class="plus_tutorscore" id="grade">A+</span>
         </div>
         <b>튜터메시지</b>
-        <div class="plus_tutormsg" id="tutor message">할수있다면최선을다해가르치겠습니다!</div>
-        <b>수업 진행 계획</b>
-        <div class="plus_tutormsg" id="tutor syllabus">할수있다면최선을다해가르치겠습니다!</div>
+        <div class="plus_tutormsg" id="tutor message"></div>
+        <b>튜터링 진행 계획</b>
+        <div class="plus_tutormsg" id="tutor syllabus"></div>
         <a class="modal_close_btn"><span class="material-symbols-outlined"> close </span></a>
     </div>
 
     <button id="popup_open_btn">팝업창 띄어 줘염</button>
 
+
+    <script type="text/javascript" src="application.js"></script>
     <script>
         const courseURL = "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev"
+        let temp = location.href.split("?");
+        const course_id = temp[1];
         
         function modal(id,course_id) {
             var zIndex = 9999;
@@ -55,12 +59,12 @@
                 (result) => {
                     let syllabus = document.getElementById("tutor syllabus");
                     let message = document.getElementById("tutor message");
-                    
-                    console.log(syllabus.innerText);
-                    console.log(message.innerText);
+                    let tutor = document.getElementById("tutor");
+            
 
                     syllabus.textContent = result.syllabus;
                     message.textContent = result.motivation;
+                    tutor.textContent = result.tutor;
 
                     console.log(syllabus.value);
                     console.log(message.value);
@@ -126,13 +130,13 @@
             })
                 .then((response) => response.json());
         }
-
-        document
-            .getElementById("popup_open_btn")
-            .addEventListener("click", function () {
-                // 모달창 띄우기
-                modal("my_modal", "SWE2015-41");
-            });
+        modal("my_modal", course_id);
+        // document
+        //     .getElementById("popup_open_btn")
+        //     .addEventListener("click", function () {
+        //         // 모달창 띄우기
+        //         modal("my_modal", "SWE2015-41");
+        //     });
     </script>
 </body>
 
