@@ -112,14 +112,10 @@ select {}
 }
 
 hr {
-    align: right;
-    width: 70%;
-    height: 10px;
+    height: 20px;
     border: 0;
-}
-
-.right-hr {
-    margin-right: 0;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .content>div {
@@ -591,31 +587,31 @@ button {
 }
 
 
-#info_name{
-    margin-left:3px;
+#info_name {
+    margin-left: 3px;
 }
 
-#info_studentnum{
-    margin-left:3px;
+#info_studentnum {
+    margin-left: 3px;
 }
 
-#mycourseinfo{
-    display:contents;
+#mycourseinfo {
+    display: contents;
 
-    height:40px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
-    padding:5px;
+    padding: 5px;
 
     overflow: hidden;
-    background-color:  rgb(0, 0, 110);
+    background-color: rgb(0, 0, 110);
     margin-left: 10px;
     text-align: center;
-    color:whitesmoke;
+    color: whitesmoke;
 }
 
 
-.okclass{
-    width:40px;
-    margin-left:35%;
+.okclass {
+    width: 40px;
+    margin-left: 35%;
 }
