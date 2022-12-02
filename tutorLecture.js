@@ -1,9 +1,9 @@
-const URL = "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev"
+const tutorLectureURL = "https://rpyy83l3r1.execute-api.ap-northeast-2.amazonaws.com/dev"
 
-let temp = location.href.split("?");
-let data = temp[1].split(":");
-const Name = data[0]; 
-const id = data[1]; // 필요함
+let temp1 = location.href.split("?");
+let data1 = temp1[1].split(":");
+const Name = data1[0]; 
+const tutor_id = data1[1]; // 필요함
 
 //그룹지원버튼 토글
 let btntoggle = document.getElementById("btn_toggle");
@@ -70,7 +70,7 @@ ckbtn.addEventListener('click', function(){
 });
 
 async function allLecture() {
-    return await fetch(URL + "/getallLecture", {
+    return await fetch(tutorLectureURL + "/getallLecture", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -133,13 +133,13 @@ tutorsubmit.addEventListener('click', function(){
         // syllabus_val = syllabus.value;
         // usertext_val = usertext.value;
 
-        console.log(course_id);
-        console.log(course_name);
-        console.log(professor_name);
-        console.log(syllabus_val);
-        console.log(usertext_val);
-        console.log(grouptxt_val);
-        console.log(timeinfo);
+        // console.log(course_id);
+        // console.log(course_name);
+        // console.log(professor_name);
+        // console.log(syllabus_val);
+        // console.log(usertext_val);
+        // console.log(grouptxt_val);
+        // console.log(timeinfo);
 
         if(grouptxt_val === undefined) {
             console.log("text 넣기");
@@ -147,12 +147,13 @@ tutorsubmit.addEventListener('click', function(){
             console.log(grouptxt_val);
         }
 
-        const courseadd = tutorApplicatoin(course_id, course_name, professor_name, id, grouptxt_val, usertext_val, syllabus_val, timeinfo);
+        const courseadd = tutorApplicatoin(course_id, course_name, professor_name, tutor_id, grouptxt_val, usertext_val, syllabus_val, timeinfo);
 
         courseadd.then(
             (result) => {
                 if(result.success){
                     alert("Tutoring Course Added!");
+                    window.close();
                 }
                 else{
                     alert("Adding Failed");
@@ -172,7 +173,7 @@ async function tutorApplicatoin(course_id, course_name, professor_name, user_id,
         "syllabus": syllabus_val,
         "schedule": timeinfo
     };
-    return await fetch(URL + "/addcourse", {
+    return await fetch(tutorLectureURL + "/addcourse", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
