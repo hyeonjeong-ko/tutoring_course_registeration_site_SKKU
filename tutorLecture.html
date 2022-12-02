@@ -47,38 +47,43 @@
     </div>
 
     <div>
-        <button type="button" id="tutorAppButton" style="float:right; margin-top: 10px; margin-right: 10px" onclick="window.close(); return tutorApplication()">과목 등록</button>
+        <button type="button" id="tutorAppButton" style="float:right; margin-top: 10px; margin-right: 10px">과목 등록</button>
     </div>
 
     <script type="text/javascript" src="application.js"></script>
     <script>
-        const response = allcourses();
+        function lecApp() {
+            const response = allcourses();
 
-        response.then( (result) => {
-        let contents = document.querySelector("#contents");
+            response.then( (result) => {
 
-        Object.keys(result.courses).forEach(element => {
-            let temp = {
-                "id": id,
-                "name": name,
-                "professor": professor,
-                "tutor": tutor_id,
-                "tutee": tutees
-            };
-            
-            temp.id         = result["courses"][element]["id"];
-            temp.name       = result["courses"][element]["name"];
-            temp.professor  = result["courses"][element]["professor"];
-            temp.tutor      = result["courses"][element]["tutor"];
-            temp.tutee      = result["courses"][element]["tutee"];
+                Object.keys(result.courses).forEach(element => {
+                    let temp = {
+                    
+                    };
+                    temp.id         = result["courses"][element]["id"];
+                    temp.name       = result["courses"][element]["name"];
+                    temp.professor  = result["courses"][element]["professor"];
+                    temp.tutor      = result["courses"][element]["tutor"];
+                    temp.tutee      = result["courses"][element]["tutee"];
+    
+                    const tmpName = document.getElementById("lecName")
+    
+                    if (temp.name === tmpName) {
+                        let new_course = document.createElement("b");
+                        new_course.textContent = temp.name;
+                        contents.appendChild(new_course);
+                        console.log(temp);
+                    }
+                });
+            });
 
-            let new_course = document.createElement("b");
-            new_course.textContent = temp.name;
-            contents.appendChild(new_course);
-            console.log(temp);
-        });
-    //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
-    });
+            window.alert("등록이 완료되었습니다.")
+            window.close()
+        }
+
+        const tutorAppButton = document.getElementById("tutorAppButton")
+        tutorAppButton.addEventListener("click", lecApp)
 
     </script>
 </body>
