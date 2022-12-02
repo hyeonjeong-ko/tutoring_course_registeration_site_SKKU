@@ -180,9 +180,7 @@ const allLectures = allLecture();
     return tbl + th + result + tbl2 ;
     }
 
-    // create the table row data
-function insertdata(day,fout,fin,balance) {
-};
+
 
 let j =0;
 
@@ -374,8 +372,24 @@ function createUserTable(p1,p2,p3,p4,p5, p6){
             '<td>' + p6 + '</td>' +                 
             '</tr>'
 
-return tbl + th + user_result + tbl2 ;
+return tbl + th  ;
 }
+
+
+// create the table row data
+function insertdata(p1,p2,p3,p4,p5) {
+    let user_row;
+    user_row += '<tr>' +
+    '<td>' + p1 + '</td>' + 
+   '<td>' + p2 + '</td>' +
+   '<td>' + p3 + '</td>' + 
+   '<td>' + p4 + '</td>' + 
+   '<td>' + p5 +'/5'+ '</td>' + 
+   '<td>' + '11:00~12:00/offline' + '</td>' +                 
+   '</tr>'
+
+    return user_row ;
+};
 
 
 
