@@ -3,7 +3,14 @@
 ###### 웹페이지 기반 오픈소스 프로젝트로, 현재 존재하는 학교 수강신청 방식과 유사하게 작동하는 튜터링 신청 웹사이트이다.
 ------------
 ### [Website Screenshot]
+1. 로그인  
+![오소실_로그인창](https://user-images.githubusercontent.com/90546366/205317813-b6791b26-09c2-40d2-8f34-8b8c2ee5b722.png)
+
+2. 수강신청  
 ![오소실_수강신청사이트](https://user-images.githubusercontent.com/90546366/205305341-5cbdc302-1db5-4ce4-abc0-fd286b7e45ed.png)
+
+3. 과목 등록  
+![오소실_과목등록](https://user-images.githubusercontent.com/90546366/205317912-9eea1f4f-b15a-4cb9-95a6-ea12cd184430.png)
 
 ------------
 ### [Youtube Link]
