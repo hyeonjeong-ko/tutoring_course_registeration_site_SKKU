@@ -86,7 +86,7 @@ AWS RDS에 post request를 보내고, 학생의 학번과 비밀번호를 비교
     - 해당 과목의 튜터링이 존재하지 않아야 함.(이는 전공수업조회란에서 '불가'로 표기된 과목들을 말함). 이 경우에는 server에서 False라는 return을 보내며, 이 경우 Adding Failed 알림을 받게된다.
     - 입력한 튜티들이 이미 등록되어 존재하는 학번임.(이때 위에 20개의 테스트 계정을 참고) 마찬가지로, 이 경우 Adding Failed 알림을 받게된다.
 
-<img src = "./Figure/success.png" width = 600px>
+<img src = "./Figure/Success.png" width = 600px>
 
 8. 이후 과목등록 버튼을 눌러, 위 조건이 모두 충족되면 'Tutoring Course Added' 알림을 받게 된다. 그렇지 않으면 'Adding Failed' 알림을 받는다.
 9. 이후 알림이 꺼지고 나면, 창은 자동으로 종료된다. 해당 **튜터링이 잘 등록되었는지 확인하기 위해 새로고침**을 하고 나서, 수강신청란을 확인하면, 과목이 추가된 것을 확인할 수 있다. 
