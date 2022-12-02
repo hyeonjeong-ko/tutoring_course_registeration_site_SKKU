@@ -73,8 +73,8 @@ document.onkeyup = function (command) {
 
 
 // tutoring lecture application
-function tutorLecture() {
-    window.open("tutorLecture.html", "tutor Lecture Application", "width=800, height=600, left=300, top=200")
+function tutorLecture(name, id) {
+    window.open("tutorLecture.html?"+name+":"+id, "tutor Lecture Application", "width=800, height=600, left=300, top=200")
 }
 
 

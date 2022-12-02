@@ -62,32 +62,7 @@ async function tutorApplicatoin(id, name, professor, tutor_id, tutees) {
 }
 
 const response = allcourses();
-// let courses;
-//promise를 parsing하는건 너무 어렵고요..(찾아봤는데 불가능한거 같습니다.) 따라서 다음 방법을 권장합니다.
-response.then( (result) => {
-    let contents = document.querySelector("#contents");
 
-    Object.keys(result.courses)
-        .forEach(element => {
-            let temp = {
-
-            };
-            temp.id         = result["courses"][element]["id"];
-            temp.name       = result["courses"][element]["name"];
-            temp.professor  = result["courses"][element]["professor"];
-            temp.tutor      = result["courses"][element]["tutor"];
-            temp.tutee      = result["courses"][element]["tutee"];
-            temp.tuteeNum   = result["courses"][element]["tuteeNum"];
-
-            //요런식으로 추가하시면 될 것 같습니다.
-            let new_course = document.createElement("b");
-            new_course.textContent = temp.name;
-            contents.appendChild(new_course);
-            //console.log(temp);
-            // courses.push(courses_name[element]) -> 요렇게 해서 밖에서 console.log(courses)라고 해도 작동하지 않습니다. undefined가 나와요.
-        });
-    //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
-    });
 
 // const mycourses = allmycourses(user_id);
 const allLectures = allLecture();
