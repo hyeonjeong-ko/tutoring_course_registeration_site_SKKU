@@ -215,12 +215,14 @@
                 temp.tutor      = result["courses"][element]["tutor"];
                 temp.tutee      = result["courses"][element]["tutee"];
                 temp.tuteeNum   = result["courses"][element]["tuteeNum"];
+                temp.schedule   = result["courses"][element]["schedule"];
+
                 
 
                 let my_course = document.createElement("b");
                 my_course.innerHTML = '<div class="under_tab" style="text-align:center">'+
                     '수강 신청 내역' + '</div>' 
-                    + createUserTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum);
+                    + createUserTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum, temp.schedule);
                     curApplication_form.appendChild(my_course);
 
                 
