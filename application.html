@@ -189,6 +189,119 @@
 
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="application.js"></script>
+    <script type="text/javascript" src="tutorLecture.js"></script>
+
+    <script>
+        let temp = location.href.split("?");
+        let data = temp[1].split(":");
+        const id = data[0];
+        const name = data[1];
+
+        console.log(id + ", "+ name);
+
+        //내 수강과목 조회
+        const mycourses = allmycourses(id);
+        mycourses.then( (result) => {
+            let curApplication_form = document.querySelector("#curApplication_form");
+        
+        Object.keys(result.courses)
+            .forEach(element => {
+                let temp = {
+
+                };
+                temp.id         = result["courses"][element]["id"];
+                temp.name       = result["courses"][element]["name"];
+                temp.professor  = result["courses"][element]["professor"];
+                temp.tutor      = result["courses"][element]["tutor"];
+                temp.tutee      = result["courses"][element]["tutee"];
+                temp.tuteeNum   = result["courses"][element]["tuteeNum"];
+                
+
+                let my_course = document.createElement("b");
+                my_course.innerHTML = '<div class="under_tab" style="text-align:center">'+
+                    '수강 신청 내역' + '</div>' 
+                    + createUserTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum);
+                    curApplication_form.appendChild(my_course);
+
+                
+            
+            });
+
+        });
+        //1.탭바에 학수번호-분반검색후 mycourse등록=======================
+        const searchbtn= document.getElementById('searchbtn');
+
+        searchbtn.addEventListener('click', function(){
+            let gwamok = document.getElementById("gwamok");
+            let ban = document.getElementById("ban");
+
+            inputval_1=gwamok.value;
+            inputval_2=ban.value;
+
+            gwamok.value="";
+            ban.value="";
+            const check1 = isinLecture(inputval_1 + "-" +inputval_2);
+            console.log(inputval_1 + "-" +inputval_2);
+
+            //서버과목코드에 있다면 확인후 mycourse에 넣습니다.
+            check1.then(
+                (data) => {
+                    if(data.success){
+                        const check2 = tuteeApplication(id, inputval_1 + "-" +inputval_2);
+                        check2.then(
+                            (data) => {
+                                if(data.success){
+
+                                }
+                                else{
+                                    alert("Applicatoin Failed.");
+                                }
+                            }
+                        )
+                    }else{
+                        alert("its wrong class num.");
+                    }
+                }
+            )
+
+
+            // console.log(gwamok);
+            // console.log(gwamok,ban);
+        });
+
+        //해당하는 과목이 존재하는지 서버로부터 받아옵니다. 존재하는 경우 success = True
+        async function isinLecture(course_id) {
+            let data = {
+                "id" : course_id
+            };
+            return await fetch(URL + "/isinLecture", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+                .then((response) => response.json());
+        }
+
+        //튜터링 신청
+        //튜터링 수강 신청 - 튜티
+        //return is true/false
+        async function tuteeApplication(tutee_id, course_id) {
+            let data = {
+                "id": course_id,
+                "tutee": tutee_id,
+            };
+            return await fetch(URL + "/addtutee", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+                .then((response) => response.json());
+        }
+    </script>
 
 
 

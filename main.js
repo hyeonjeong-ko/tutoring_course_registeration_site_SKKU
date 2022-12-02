@@ -44,7 +44,9 @@ function enterUrl(id,pwd) {
             if (data.success) {
                 alert("successs");
 
-                location.href = 'application.html' //로그인 성공
+                
+
+                location.href = 'application.html?'+id+":"+pwd //로그인 성공
 
             }
             else {

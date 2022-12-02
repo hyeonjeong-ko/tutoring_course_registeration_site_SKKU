@@ -38,22 +38,7 @@ async function allmycourses(user_id) {
 }
 
 
-//튜터링 수강 신청 - 튜티
-//return is true/false
-async function tuteeApplication(tutee_id, course_id) {
-    let data = {
-        "id": course_id,
-        "tutee": tutee_id,
-    };
-    return await fetch(URL + "/addtutee", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    })
-        .then((response) => response.json());
-}
+
 
 //튜터링 과목 등록 - 튜터
 //return is true/false
@@ -104,35 +89,34 @@ response.then( (result) => {
     //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
     });
 
-let user_id = "2020315791"; // 요건 로그인 후에 받아오시죠.
-const mycourses = allmycourses(user_id);
+// const mycourses = allmycourses(user_id);
 const allLectures = allLecture();
 
-mycourses.then( (result) => {
-    let curApplication_form = document.querySelector("#curApplication_form");
+// mycourses.then( (result) => {
+//     let curApplication_form = document.querySelector("#curApplication_form");
 
-    Object.keys(result.courses)
-        .forEach(element => {
-            let temp = {
+//     Object.keys(result.courses)
+//         .forEach(element => {
+//             let temp = {
 
-            };
-            temp.id         = result["courses"][element]["id"];
-            temp.name       = result["courses"][element]["name"];
-            temp.professor  = result["courses"][element]["professor"];
-            temp.tutor      = result["courses"][element]["tutor"];
-            temp.tutee      = result["courses"][element]["tutee"];
+//             };
+//             temp.id         = result["courses"][element]["id"];
+//             temp.name       = result["courses"][element]["name"];
+//             temp.professor  = result["courses"][element]["professor"];
+//             temp.tutor      = result["courses"][element]["tutor"];
+//             temp.tutee      = result["courses"][element]["tutee"];
 
-            //요런식으로 추가하시면 될 것 같습니다.
-/*
-            let new_course = document.createElement("b");
-            new_course.textContent = temp.name;
-            curApplication_form.appendChild(new_course);
-            console.log(temp);
-  */                      
-            // courses.push(courses_name[element]) -> 요렇게 해서 밖에서 console.log(courses)라고 해도 작동하지 않습니다. undefined가 나와요.
-        });
-    //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
-    });
+//             //요런식으로 추가하시면 될 것 같습니다.
+// /*
+//             let new_course = document.createElement("b");
+//             new_course.textContent = temp.name;
+//             curApplication_form.appendChild(new_course);
+//             console.log(temp);
+//   */                      
+//             // courses.push(courses_name[element]) -> 요렇게 해서 밖에서 console.log(courses)라고 해도 작동하지 않습니다. undefined가 나와요.
+//         });
+//     //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
+//     });
 
     allLectures.then((result) => {
     Object.keys(result.lectures)
@@ -371,34 +355,7 @@ return tbl + th + user_result + tbl2 ;
 
 
 
-    //내 수강과목 조회
-    mycourses.then( (result) => {
-        let curApplication_form = document.querySelector("#curApplication_form");
-    
-    Object.keys(result.courses)
-        .forEach(element => {
-            let temp = {
 
-            };
-            temp.id         = result["courses"][element]["id"];
-            temp.name       = result["courses"][element]["name"];
-            temp.professor  = result["courses"][element]["professor"];
-            temp.tutor      = result["courses"][element]["tutor"];
-            temp.tutee      = result["courses"][element]["tutee"];
-            temp.tuteeNum   = result["courses"][element]["tuteeNum"];
-            
-
-            let my_course = document.createElement("b");
-            my_course.innerHTML = '<div class="under_tab" style="text-align:center">'+
-                '수강 신청 내역' + '</div>' 
-                + createUserTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum);
-                curApplication_form.appendChild(my_course);
-
-            
-         
-        });
-
-    });
 
 //네비바 수강신청기능1
 
