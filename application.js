@@ -222,15 +222,17 @@ response.then( (result) => {
       
             
             let enroll_btn = document.getElementsByClassName('enroll_btn');
-     
+            let plus_btn = document.getElementsByClassName('plus_btn');
+            
 
             let usertable = document.getElementsByClassName('usertable');
 
             for(let i = 0; i<enroll_btn.length;i++){
                 enroll_btn[i].addEventListener('click',function(){
+                    console.log("hi");
                     console.log(i) //row index
                     
-                    //등록버튼이벤트구현중
+                    //신청등록버튼이벤트구현중
                     let enroll_table = document.getElementsByClassName('.enroll_table');
                     var arr = Array.prototype.slice.call( enroll_table )
                     console.log(arr.length)
@@ -253,13 +255,27 @@ response.then( (result) => {
                        '<td>' + tuteenum +'/5'+ '</td>' + 
                        '<td>' + schedule + '</td>' +                 
                        '</tr>'
-
-
-                    nroll_table.in
-                    
-
+                       
                 })
+
+            //더보기
+            plus_btn[i].addEventListener('click',function() {
+                console.log(i); // click한 +버튼인덱스
+
+                //DB에서 인덱스에 해당하는 tutor명/취득성적/메시지를받아온다
+                //modal.html 태그를가져옴
+                let tutor_name = document.getElementsByClassName('.plus_tutorname');
+                let tutor_score = document.getElementsByClassName('.plus_tutorscore');
+                let tutor_msg = document.getElementsByClassName('.plus_tutormsg');
+
+                // EX_ tutor_name.innerText=DB에서끌어온값
+
+                
+            })
+
+                
             }
+
 
             
 
@@ -384,3 +400,14 @@ return tbl + th + user_result + tbl2 ;
 
     });
 
+//네비바 수강신청기능1
+
+
+let course_select_btn = document.getElementsByClassName("course_select_btn");
+course_select_btn.addEventListener("click",function() {
+    //선택한 select 과목값
+    // DB에 있는지 확인후 해당과목을 mycourse에 추가한다
+    var select_course = course_select_btn[selectedIndex].text;
+    console.log(select_course);
+              
+})

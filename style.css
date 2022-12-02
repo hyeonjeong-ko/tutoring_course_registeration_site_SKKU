@@ -533,3 +533,25 @@ table {
     border-radius: 5px;
     color: whitesmoke;
 }
+
+.plus_btn {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    font-size: large;
+}
+
+.plus_tutorscore{
+    margin-top:5px;
+}
+
+.plus_tutormsg{
+    margin-top:5px;
+    height:200px;
+}
+
+.course_select_btn {
+    background-color: #0c471b;
+    border-radius: 5px;
+    color: whitesmoke;
+}

@@ -15,7 +15,7 @@ loginBtn.addEventListener('click', function(event){
     if(id.length==0 || pwd.length==0){
         alert("Please Enter your ID and Password.");
     }else{
-        //enterUrl(id,pwd);
+        enterUrl(id,pwd);
     }
 
 
