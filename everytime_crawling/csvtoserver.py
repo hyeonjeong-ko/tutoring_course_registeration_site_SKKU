@@ -10,12 +10,8 @@ def postLecture(data):
     response = requests.post(url + "/addlecture", json=(data))
     return response
 
-def dept(department):
-    if department == "시스템경영공학과":
-        return True
-    elif department == "소프트웨어학과":
-        return True
-    elif department == "물리학과":
+def dept(department, id):
+    if department == "소프트웨어학과" and "SWE" in id:
         return True
     else:
         return False
@@ -27,7 +23,7 @@ if __name__ == "__main__":
             for row in spamreader:
                 if row[1] == "전공영역2":
                     continue
-                elif dept(row[1]):
+                elif dept(row[1], row[3]):
                     temp2 = {
 
                     }

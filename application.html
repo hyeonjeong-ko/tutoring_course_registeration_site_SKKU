@@ -33,8 +33,11 @@
             <b>학위과정 :</b> <br />
             <b>학과(전공) :</b>
             <br /><br />
-            <button onclick="location.href='index.html'">로그아웃</button> <br /><br />
+            <button id="logout" onclick="location.href='index.html'">로그아웃</button> <br /><br />
+            <a href="./◈ 성균튜터링 안내사항.hwp" download>
             <button type="button" id="downManual">성균튜터링매뉴얼다운로드</button>
+            </a>
+
         </div>
     </div>
 
@@ -54,8 +57,8 @@
           <div class="under_tab">
 
             <div class="under_tab1">
-              <div>수강신청</div>
-              <select id="course_select" >
+              <div class="course_select_btn">과목 신청</div>
+              <select name="sugang" id="course_select">
             </select>
             </div>
             
@@ -68,7 +71,7 @@
                 -
                 <input type="text" name="ban" id="ban" size="4" maxlength="2" onkeydown="if(event.keyCode == 13) fastSave();">
               </div>
-              <div class="btn_1" onclick="fastSave()">수강신청</div>
+              <div id="searchbtn" class="bar_enrollbtn">수강신청</div>
             </div>
         </div>
         </div>
@@ -148,9 +151,9 @@
                 </div>
             </div>
             <div class="content-dis" id="contents">
-              dsfasdfijasodf
+
             </div>
-            <div class="content-dis">전공수업조회</div>
+            <div id= "contents_all" class="content-dis">전공수업조회</div>
             <div class="content-dis">교양수업조회</div>
         </div>
     </div>
@@ -158,56 +161,49 @@
     <button type="button" id="tutorLectureBtn" style="float: right; margin: 5px 10px; width:200px; height:50px"
         onclick="tutorLecture()">튜터링과목등록</button>
 
-    <div id="curApplication_form">
-        <b>내 수강신청 내역 창</b> <br />
-
-    </div>
+    
+        <div id="curApplication_form">
+            <b></b>
+    
+        </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
+    
+
+      
+    <script>
+        //let enroll_table = document.getElementsByClassName('.enroll_table');
+        //var arr = Array.prototype.slice.call( enroll_table )
+
+    
+
+        
+
+    
+    
+    </script>
+    
+
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="application.js"></script>
-    <!-- <script type="text/javascript" src="application copy.js"></script> -->
+    <script type="text/javascript" src="tutorLecture.js"></script>
 
     <script>
+        let temp = location.href.split("?");
+        let data = temp[1].split(":");
+        const id = data[0];
+        const name = data[1];
 
+        console.log(id + ", "+ name);
 
-
-
-    // create the table
-    var result = '';
-    function createTable(p1,p2,p3,p4,p5){
-        var tbl = '<table>';
-        var tbl2 = '</table>';
-        var th = '<thead>' + '<tr>' + 
-        '<th>' + '학수번호 - 분반' + '</th>' +
-        '<th>' + '교과목명' + '</th>' +
-        '<th>' + '교강사' + '</th>' +
-        '<th>' + 'Tutor' + '</th>' +
-        '<th>' + 'Tutee' + '</th>' +
-        +'</tr>' + '</thead>';
-
-                result += '<tr>' + '<td>' + p1 + '</td>' + 
-                '<td>' + p2 + '</td>' +
-                '<td>' + p3 + '</td>' + 
-                '<td>' + p4 + '</td>' + 
-                '<td>' + p5 + '</td>' + 
-                '</tr>'
-    return tbl + th + result + tbl2;
-    }
-
-    // create the table row data
-function insertdata(day,fout,fin,balance) {
-};
-
-var tablebox = document.getElementById("contents")
-//tablebox.innerHTML="3"
-const response = allcourses();
-
-//promise를 parsing하는건 너무 어렵고요..(찾아봤는데 불가능한거 같습니다.) 따라서 다음 방법을 권장합니다.
-    response.then( (result) => {
+        //내 수강과목 조회
+        const mycourses = allmycourses(id);
+        mycourses.then( (result) => {
+            let curApplication_form = document.querySelector("#curApplication_form");
+        
         Object.keys(result.courses)
             .forEach(element => {
                 let temp = {
@@ -218,61 +214,137 @@ const response = allcourses();
                 temp.professor  = result["courses"][element]["professor"];
                 temp.tutor      = result["courses"][element]["tutor"];
                 temp.tutee      = result["courses"][element]["tutee"];
-
-                //요런식으로 추가하시면 될 것 같습니다.
-                // let new_course = document.createElement("option");
-                // new_course.textContent = temp.name+temp.tutee;
-                // contents.appendChild(new_course);
-                
-                //table 생성
-                console.log(temp.id);
-                tablebox.innerHTML = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tutee);
-                tmp = tablebox.innerHTML;
-                tabletext = tmp.replace('NaN','');
-                tablebox.innerHTML = tabletext;
+                temp.tuteeNum   = result["courses"][element]["tuteeNum"];
                 
 
-                var course_select = document.getElementById("course_select");
-                var option=document.createElement("option");
-                option.text=temp.name;
-                option.value=temp.id ;
-                course_select.add(option);
+                let my_course = document.createElement("b");
+                my_course.innerHTML = '<div class="under_tab" style="text-align:center">'+
+                    '수강 신청 내역' + '</div>' 
+                    + createUserTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tuteeNum);
+                    curApplication_form.appendChild(my_course);
 
-
-
-                // data = createTable(temp.id,temp.name,temp.professor,temp.tutor,temp.tutee);
-                // tmp = tablebox.innerHTML;
-                // tabletext = tmp.replace('NaN','');
-                // tablebox.innerHTML = tabletext;
-
-                // tablebox.innerHTML = data
                 
-
-                // courses.push(courses_name[element]) -> 요렇게 해서 밖에서 console.log(courses)라고 해도 작동하지 않습니다. undefined가 나와요.
+            
             });
-        //해당 항목은 application_mentee.html에 과목 목록을 만드는 데에 필요할 것이라 생각합니다. 
+
+        });
+        //1.탭바에 학수번호-분반검색후 mycourse등록=======================
+        const searchbtn= document.getElementById('searchbtn');
+
+        searchbtn.addEventListener('click', function(){
+            let gwamok = document.getElementById("gwamok");
+            let ban = document.getElementById("ban");
+
+            inputval_1=gwamok.value;
+            inputval_2=ban.value;
+
+            gwamok.value="";
+            ban.value="";
+            const check1 = isinLecture(inputval_1 + "-" +inputval_2);
+            console.log(inputval_1 + "-" +inputval_2);
+
+            //서버과목코드에 있다면 확인후 mycourse에 넣습니다.
+            check1.then(
+                (data) => {
+                    if(data.success){
+                        const check2 = tuteeApplication(id, inputval_1 + "-" +inputval_2);
+                        check2.then(
+                            (data) => {
+                                if(data.success){
+
+                                }
+                                else{
+                                    alert("Applicatoin Failed.");
+                                }
+                            }
+                        )
+                    }else{
+                        alert("its wrong class num.");
+                    }
+                }
+            )
+
+
+            // console.log(gwamok);
+            // console.log(gwamok,ban);
+        });
+
+        //해당하는 과목이 존재하는지 서버로부터 받아옵니다. 존재하는 경우 success = True
+        async function isinLecture(course_id) {
+            let data = {
+                "id" : course_id
+            };
+            return await fetch(URL + "/isinLecture", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+                .then((response) => response.json());
+        }
+
+        //튜터링 신청
+        //튜터링 수강 신청 - 튜티
+        //return is true/false
+        async function tuteeApplication(tutee_id, course_id) {
+            let data = {
+                "id": course_id,
+                "tutee": tutee_id,
+            };
+            return await fetch(URL + "/addtutee", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+                .then((response) => response.json());
+        }
+    </script>
+
+
+
+<script>
+
+    //검색 탭 기능
+      $(document).ready(function(){
+      $('.under_tab').css("display","none");
+
+
+      $("#course_enroll").on("click", function () {
+          $('.under_tab').show();
+    });
+
+    $(".other_tab").on("click", function () {
+          $('.under_tab').hide();
     });
 
 
-    </script>
-
-    <script>
-        $(document).ready(function(){
-        console.log("sbia")
-        $('.under_tab').css("display","none");
-
-
-        $("#course_enroll").on("click", function () {
-            $('.under_tab').show();
-        });
-
-        $(".other_tab").on("click", function () {
-            $('.under_tab').hide();
-        });
-
-    // process.. 
+    //네비바 수강신청기능1
+     //선택한 select 과목값
+    $(".course_select_btn").on("click", function () {
+        $("select[name=sugang]").change(function(){
+        let selectcourse = $(this).val();
+        console.log(selectcourse)
+        //선택 selectcourse value값(학수번호) 가져오기
+    // DB에 있는지 확인후 해당과목을 mycourse에 추가한다
+    // 선택한 option의 value 값
     });
-    </script>
+    
+    
+
+  
+});
+
+
+
+// process.. 
+});
+
+
+
+</script>
 </body>
 
 </html>
