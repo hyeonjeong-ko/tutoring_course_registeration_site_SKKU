@@ -100,12 +100,12 @@ AWS RDS에 post request를 보내고, 학생의 학번과 비밀번호를 비교
 
 ### 방법1 : 신청 버튼
 ---
-<img src = "./Figure/success1.png" width = 600px>
+<img src = "./Figure/Success1.png" width = 600px>
 
 1. 원하는 과목의 신청버튼을 누른다.
 2. 확인버튼을 누르면 사이트는 자동으로 새로고침 될 것이다.
 
-<img src = "./Figure/success2.png" width = 600px>
+<img src = "./Figure/Success2.png" width = 600px>
 
 3. 수강신청 내역은 아래에서도 확인할 수 있다. 
 
