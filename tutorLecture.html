@@ -31,7 +31,6 @@
             </span>
         </div>
 
-
         <h4>
             2.신청 과목 정보
         </h4>
@@ -46,9 +45,7 @@
                     check
                 </span>
             </div>
-
         </div>
-
 
         <h4>4. 튜터링 계획(Syllabus)</h4>
         <div class="q4">
@@ -56,7 +53,6 @@
             <textarea class="syllabustxt syllabustxt1" style="color:black" cols="40" rows="10"> </textarea>
         </div>
     </div>
-
 
     <div id="tutorLecture_form" style="float: right; text-align: left; margin-right: 10px">
         <h4>5. 지원 동기</h4>
@@ -77,8 +73,12 @@
             <span><input id="endtime" type="time" /></span>
         </div>
 
-    <div>
-        <button type="button" id="tutorAppButton" style="float:right; margin-top: 10px; margin-right: 10px">과목 등록</button>
+        <div>
+            <button id="tutor_enroll_btn" class="w-btn w-btn-green" type="button">
+                과목등록
+            </button>
+
+        </div>
     </div>
 
     <script type="text/javascript" src="application.js"></script>
@@ -113,7 +113,7 @@
             window.close()
         }
 
-        const tutorAppButton = document.getElementById("tutorAppButton")
+        const tutorAppButton = document.getElementById("tutor_enroll_btn")
         tutorAppButton.addEventListener("click", lecApp)
 
     </script>
